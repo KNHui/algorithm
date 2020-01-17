@@ -1,2 +1,3 @@
-# algorithm
-Algorithm source code management repositor
+# Algorithm
+
+Algorithm source code management repository
