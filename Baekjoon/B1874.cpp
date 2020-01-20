@@ -1,4 +1,5 @@
 /*
+	스택 수열
 	https://www.acmicpc.net/problem/1874
 	
 	만들어야 하는 수열의 수가
@@ -15,7 +16,7 @@ int sqnc[100001];
 stack<int> stc;
 queue<char> ans;
 
-void input() 
+void input()
 {
 	cin >> N;
 	for (int i = 0; i < N; ++i)
@@ -33,26 +34,26 @@ void output()
 	}
 }
 
-void push(int num) 
+void push(int num)
 {
 	stc.push(num);
 	ans.push('+');
 }
 
-void pop() 
+void pop()
 {
 	stc.pop();
 	ans.push('-');
 }
 
-void solve() 
+void solve()
 {
 	int num = 1;
 	int sqncIdx = 0;
 
-	while (sqncIdx != N) 
+	while (sqncIdx != N)
 	{
-		if (stc.empty()) 
+		if (stc.empty())
 		{
 			push(num++);
 		}
@@ -79,7 +80,7 @@ void solve()
 	output();
 }
 
-int main() 
+int main()
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
