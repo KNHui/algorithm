@@ -12,6 +12,7 @@
 	벡터 ing_dist와 ing_idx에 트럭의 무게와 인덱스를 추가한다.
 	그리고 answer를 1 증가시킨다.
 */
+
 #include <string>
 #include <vector>
 #include <iostream>

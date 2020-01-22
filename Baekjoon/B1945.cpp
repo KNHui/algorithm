@@ -10,9 +10,11 @@
 	저장된 값들의 최솟값에 1을 더한 값을 dp[i][j]에 저장한다.
 	즉, 인덱스 (i, j)에서 dp[i][j]의 값을 한 변으로 하는 정사각형을 왼쪽 위로 그릴 수 있다는 것이다.
 */
+
 #pragma warning(disable : 4996)
 #include <iostream>
 #include <algorithm>
+
 using namespace std;
 
 int n, m;

@@ -6,9 +6,11 @@
 	스택의 top 에 있는 수보다 작다면
 	만들 수 없는 수열이다.
 */
+
 #include <iostream>
 #include <stack>
 #include <queue>
+
 using namespace std;
 
 int N;

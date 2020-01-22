@@ -7,8 +7,10 @@
 	해당 시간이 지났을 때, 다음 우선순위의 작업들이 완료되었는지 탐색하면서
 	배포될 수 있는 작업의 수를 answer 벡터의 끝에 저장한다.
 */
+
 #include <string>
 #include <vector>
+
 using namespace std;
 
 vector<int> solution(vector<int> progresses, vector<int> speeds)

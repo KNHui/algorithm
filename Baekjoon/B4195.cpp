@@ -6,8 +6,10 @@
 	유니온 파인드 알고리즘을 활용하여 그룹을 만드는데,
 	union을 해야 하는 경우 각 부모의 친구 네트워크 크기를 더해준다.
 */
+
 #include <iostream>
 #include <unordered_map>
+
 using namespace std;
 
 constexpr auto MAX_SIZE = 200001;
