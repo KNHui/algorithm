@@ -18,8 +18,9 @@
 using namespace std;
 
 int n, m;
-int side;
 int arr[1001][1001];
+
+int side;
 int dp[1001][1001];
 
 void input(void)

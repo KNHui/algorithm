@@ -15,6 +15,7 @@ using namespace std;
 
 int N;
 int sqnc[100001];
+
 stack<int> stc;
 queue<char> ans;
 
