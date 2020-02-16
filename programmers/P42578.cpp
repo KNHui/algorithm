@@ -16,13 +16,9 @@
 #include <unordered_map>
 using namespace std;
 
-int answer;
-size_t goal;
-vector<int> kinds;
-
 int solution(vector<vector<string>> clothes)
 {
-    answer = 1;
+    int answer = 1;
     unordered_map<string, int> clothes_hash;
 
     for (size_t i = 0; i < clothes.size(); ++i)
