@@ -2,7 +2,7 @@
 	벽 부수고 이동하기 2
 	https://www.acmicpc.net/problem/14442
 
-	백준 2206번 벽 부수고 이동하기(https://lrl.kr/Umz08)와 유사한 문제다.
+	백준 2206번 벽 부수고 이동하기(http://bitly.kr/UAvGSFqP)와 유사한 문제다.
 
 	벽을 부술 수 있는 횟수가 1 번에서 K 번으로 달라졌다.
 	그래서 bool 타입으로 벽을 부쉈는지 판단하던 것을 int 타입으로 수정했다.
@@ -91,7 +91,7 @@ int main()
 	cin.tie(NULL);
 
 	input();
-	int ans = bfs();
+	int ans = solve();
 	cout << ans;
 	return 0;
 }
