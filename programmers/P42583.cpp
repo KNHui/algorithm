@@ -1,16 +1,19 @@
 /*
-	´Ù¸®¸¦ Áö³ª´Â Æ®·°
+	ë‹¤ë¦¬ë¥¼ ì§€ë‚˜ëŠ” íŠ¸ëŸ­
 	https://programmers.co.kr/learn/courses/30/lessons/42583
 
-	´Ù °Ç³Í Æ®·°ÀÇ ÀÎµ¦½º¸¦ º¤ÅÍ end¿¡ ÀúÀåÇÏ°í,
-	endÀÇ »çÀÌÁî°¡ truck_weightsÀÇ »çÀÌÁî¿Í °°¾ÆÁú ¶§±îÁö ´ÙÀ½ °úÁ¤À» ¹İº¹ÇÑ´Ù.
-
-	¸ÕÀú, ´Ù¸®¸¦ °Ç³Ê°í ÀÖ´Â Æ®·°µéÀÇ °Å¸®¸¦ 1 Áõ°¡½ÃÅ°°í,
-	´Ù¸®¸¦ °Ç³Í Æ®·°ÀÇ Áß·®À» ing_weight¿¡¼­ »«´Ù.
-	ÀÌ¶§, ´Ù¸®¸¦ °¡Àå ¾Õ¿¡¼­ °Ç³Ê´Â Æ®·°ÀÇ ÀÎµ¦½º´Â º¤ÅÍ endÀÇ »çÀÌÁî¿Í °°´Ù.
-	´ë±âÇÏ°í ÀÖ´Â ´ÙÀ½ Æ®·°ÀÇ ¹«°Ô¸¦ ´Ù¸®°¡ °ßµô ¼ö ÀÖ´Ù¸é,
-	º¤ÅÍ ing_dist¿Í ing_idx¿¡ Æ®·°ÀÇ ¹«°Ô¿Í ÀÎµ¦½º¸¦ Ãß°¡ÇÑ´Ù.
-	±×¸®°í answer¸¦ 1 Áõ°¡½ÃÅ²´Ù.
+	ë‹¤ë¦¬ë¥¼ ê±´ë„Œ íŠ¸ëŸ­ì˜ ì¸ë±ìŠ¤ë¥¼ 'vector<int> end'ì— ì €ì¥í•œë‹¤.
+	'end'ì˜ 'size'ê°€ 'vector<int> truck_weights'ì˜ 'size'ì™€ ê°™ì•„ì§ˆ ë•Œê¹Œì§€ ë‹¤ìŒ ê³¼ì •ì„ ë°˜ë³µí•œë‹¤.
+	* ë‹¤ë¦¬ë¥¼ ê°€ì¥ ì•ì—ì„œ ì§€ë‚˜ê³  ìˆëŠ” íŠ¸ëŸ­ì˜ ì¸ë±ìŠ¤ëŠ” 'end'ì˜ 'size'ì™€ ê°™ë‹¤.
+	1. ë‹¤ë¦¬ë¥¼ ì§€ë‚˜ê³  ìˆëŠ” íŠ¸ëŸ­ ì²˜ë¦¬
+		1) ë‹¤ë¦¬ë¥¼ ì§€ë‚˜ê³  ìˆëŠ” íŠ¸ëŸ­ì˜ ê±°ë¦¬ë¥¼ '1' ì¦ê°€
+		2) íŠ¸ëŸ­ì´ ë‹¤ë¦¬ë¥¼ ê±´ë„Œ ê²½ìš°
+			a. ë‹¤ë¦¬ë¥¼ ê±´ë„Œ íŠ¸ëŸ­ì˜ ì¤‘ëŸ‰ì„ 'int ing_weight'ì—ì„œ ëº€ë‹¤.
+			b. 'end'ì— ë‹¤ë¦¬ë¥¼ ê±´ë„Œ íŠ¸ëŸ­ì˜ ì¸ë±ìŠ¤ë¥¼ 'push_back'
+	2. ë§¨ ì•ì—ì„œ ëŒ€ê¸°í•˜ëŠ” íŠ¸ëŸ­ ì²˜ë¦¬
+		1) 'ë§¨ ì•ì—ì„œ ëŒ€ê¸°í•˜ëŠ” íŠ¸ëŸ­ì˜ ë¬´ê²Œ + ing_weight'ê°€ 'weight' ì´í•˜ì¸ ê²½ìš°
+			a. ë§¨ ì•ì—ì„œ ëŒ€ê¸°í•˜ëŠ” íŠ¸ëŸ­ '1'ë§Œí¼ ì „ì§„
+	3. answer 1 ì¦ê°€
 */
 
 #include <string>
@@ -21,35 +24,31 @@ using namespace std;
 
 int solution(int bridge_length, int weight, vector<int> truck_weights)
 {
-    int answer = 0;
-    int next = 0;
-    int ing_weight = 0;
-    vector<int> ing_dist;
-    vector<int> ing_idx;
-    vector<int> end;
+	int			answer = 0;
+	int			next = 0;
+	int			ing_weight = 0;
+	vector<int> ing_dist;
+	vector<int> ing_idx;
+	vector<int> end;
 
-    while (end.size() < truck_weights.size())
-    {
-        for (size_t i = end.size(); i < ing_dist.size(); ++i)
-        {
-            ++ing_dist[i];
-            if (ing_dist[i] > bridge_length)
-            {
-                ing_weight -= truck_weights[ing_idx[i]];
-                end.push_back(ing_idx[i]);
-            }
-        }
-
-        if (ing_weight + truck_weights[next] <= weight)
-        {
-            ing_dist.push_back(1);
-            ing_idx.push_back(next);
-            ing_weight += truck_weights[next];
-
-            ++next;
-        }
-
-        ++answer;
-    }
-    return answer;
+	while (end.size() < truck_weights.size())
+	{
+		for (size_t i = end.size(); i < ing_dist.size(); ++i)
+		{
+			++ing_dist[i];
+			if (ing_dist[i] > bridge_length)
+			{
+				ing_weight -= truck_weights[ing_idx[i]];
+				end.push_back(ing_idx[i]);
+			}
+		}
+		if (ing_weight + truck_weights[next] <= weight)
+		{
+			ing_dist.push_back(1);
+			ing_idx.push_back(next);
+			ing_weight += truck_weights[next++];
+		}
+		++answer;
+	}
+	return answer;
 }

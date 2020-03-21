@@ -1,35 +1,26 @@
 /*
-    À§Àå
-    https://programmers.co.kr/learn/courses/30/lessons/42578
+	ìœ„ì¥
+	https://programmers.co.kr/learn/courses/30/lessons/42578
 
-    ¿ÊÀ» ÀÔÀ» ¼ö ÀÖ´Â Á¶ÇÕÀÇ ¼ö¸¦ ±¸ÇÏ´Â ¹®Á¦ÀÌ´Ù.
+	ì˜·ì„ ì…ëŠ” ê²½ìš°ì˜ ìˆ˜ë¥¼ êµ¬í•˜ëŠ” ë¬¸ì œì´ë‹¤.
 
-    DFS ¾Ë°í¸®ÁòÀ» »ç¿ëÇÏ¸é ±¸ÇÒ ¼ö ÀÖÀ¸³ª, ½Ã°£ÀÌ ¿À·¡ °É¸®±â ¶§¹®¿¡ Åë°úÇÏÁö ¸ø ÇÑ´Ù.
-    ±×·¡¼­ °æ¿ìÀÇ ¼ö¸¦ °è»êÇÏ¿© Ç®¾î¾ß ÇÑ´Ù.
-    
-    ÀÇ»óÀÇ Á¾·ù ¸¶´Ù ÀÔÀ» ¼ö ÀÖ´Â °æ¿ìÀÇ ¼ö´Â
-    'ÀÔÀ» ¼ö ÀÖ´Â ¼­·Î ´Ù¸¥ ÀÇ»óÀÇ ¼ö + ¾Æ¹« °Íµµ ¾È ÀÔ´Â °æ¿ìÀÇ ¼ö'ÀÎµ¥
-    °¢ Á¾·ù º°·Î °¡Áö°í ÀÖ´Â °æ¿ìÀÇ ¼ö¸¦ ¸ğµÎ °öÇØÁÖ¸é ¸ğµç Á¶ÇÕÀÇ ¼ö¸¦ ±¸ÇÒ ¼ö ÀÖ´Ù.
+ 	ê° ì¢…ë¥˜ ë³„ë¡œ ê°€ì§€ê³  ìˆëŠ” ì˜ìƒì˜ ìˆ˜ë¥¼ ëª¨ë‘ ê³±í•´ì£¼ë©´ ì •ë‹µì„ êµ¬í•  ìˆ˜ ìˆë‹¤.
+	ì´ë•Œ, ê³µì§‘í•©ì„ í¬í•¨í•˜ê¸° ìœ„í•´ "ì˜ìƒì˜ ìˆ˜ + 1"ì„ ê³±í•´ì¤€ë‹¤.
 */
-#include <iostream>
 #include <vector>
+#include <iostream>
 #include <unordered_map>
+
 using namespace std;
 
 int solution(vector<vector<string>> clothes)
 {
-    int answer = 1;
-    unordered_map<string, int> clothes_hash;
+	int answer = 1;
+	unordered_map<string, int> clothes_hash;
 
-    for (size_t i = 0; i < clothes.size(); ++i)
-    {
-        ++clothes_hash[clothes[i][1]];
-    }
-
-    for (auto iter = clothes_hash.begin(); iter != clothes_hash.end(); ++iter)
-    {
-        answer *= iter->second + 1;
-    }
-
-    return answer - 1;
+	for (size_t i = 0; i < clothes.size(); ++i)
+		++clothes_hash[clothes[i][1]];
+	for (auto iter = clothes_hash.begin(); iter != clothes_hash.end(); ++iter)
+		answer *= iter->second + 1;
+	return answer - 1;
 }

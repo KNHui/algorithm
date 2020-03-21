@@ -1,13 +1,14 @@
+  
 /*
-	ÁÖ½Ä°¡°İ
+	ì£¼ì‹ê°€ê²©
 	https://programmers.co.kr/learn/courses/30/lessons/42584
 
-	ÁÖ½Ä°¡°İÀÌ ³»·Á°¡Áö ¾Ê´Â ½Ã°£À» answer¿¡ ÀúÀåÇÏ¿© ¸®ÅÏÇÑ´Ù.
+	ì£¼ì‹ê°€ê²©ì´ ë‚´ë ¤ê°€ì§€ ì•Šì€ ê¸°ê°„ì„ êµ¬í•˜ëŠ” ë¬¸ì œë‹¤.
 
-    ÀÎµ¦½º j°¡ ¹è¿­À» ¹ş¾î³¯ ¶§±îÁö ÁÖ½Ä°¡°İÀÌ ³»·Á°¡Áö ¾Ê´Â´Ù¸é,
-    j´Â ¿ø·¡ °ªº¸´Ù 1 Å« »óÅÂÀÌ¹Ç·Î, answer¿¡ (j - i - 1)À» ´ã¾Æ¾ß ÇÑ´Ù.
-    ±×·¯³ª À§¿Í °°ÀÌ ÇÏ°Ô µÇ¸é ÁÖ½Ä°¡°İÀÌ ³»·Á°¬À» ¶§,
-    answer¿¡ 1 ÀÛÀº °ªÀÌ ´ã±â±â ¶§¹®¿¡ j¸¦ 1 Áõ°¡½ÃÄÑ¾ß ÇÑ´Ù.
+	1. 'size_t i'ì˜ ì£¼ì‹ê°€ê²©ì´ ë‚´ë ¤ê°€ì§€ ì•ŠëŠ” ê²½ìš°
+		1) 'size_t j'ëŠ” êµ¬í•˜ë ¤ëŠ” ê°’ë³´ë‹¤ '1' í° ìƒíƒœì´ë¯€ë¡œ, 'vector<int> answer'ì— 'j - i - 1'ì„ 'push_back'
+	2. 'size_t i'ì˜ ì£¼ì‹ê°€ê²©ì´ ë‚´ë ¤ê°„ ê²½ìš°
+		1) 'answer'ì— 'j - i'ë¥¼ 'push_back'
 */
 
 #include <string>
@@ -17,20 +18,21 @@ using namespace std;
 
 vector<int> solution(vector<int> prices)
 {
-    vector<int> answer;
+	vector<int> answer;
 
-    for (size_t i = 0; i < prices.size(); ++i)
-    {
-        size_t j;
-        for (j = i + 1; j < prices.size(); ++j)
-        {
-            if (prices[i] > prices[j])
-            {
-                ++j;
-                break;
-            }
-        }
-        answer.push_back(j - i - 1);
-    }
-    return answer;
+	for (size_t i = 0; i < prices.size(); ++i)
+	{
+		size_t j;
+		
+		for (j = i + 1; j < prices.size(); ++j)
+		{
+			if (prices[i] > prices[j])
+			{
+				++j;
+				break;
+			}
+		}
+		answer.push_back(j - i - 1);
+	}
+	return answer;
 }

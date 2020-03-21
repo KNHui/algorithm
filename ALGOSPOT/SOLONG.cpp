@@ -95,7 +95,6 @@ typedef struct TrieNode
         }
     }
 
-    // �ش� ��忡�� idx�� �ܾ ġ������ �� �� �� Ÿ���� �ؾ��ϴ°�
     int type(const char *key, int idx)
     {
         if (*key == 0)
@@ -124,14 +123,13 @@ int solve()
     vector<pair<int, string>> dict;
     tn root;
 
-    answer = M - 1; // �����̽���
+    answer = M - 1;
     for (int i = 0; i < N; ++i)
     {
         cin >> ip >> weight;
         dict.push_back(make_pair(-weight, ip));
     }
 
-    // ���� �� Ʈ���� ����
     sort(dict.begin(), dict.end());
     for (int i = 0; i < N; ++i)
     {
@@ -139,7 +137,6 @@ int solve()
     }
     root.first = -1;
 
-    // Ÿ���� �� ���ϱ�
     tn *node;
     int result;
     for (int i = 0; i < M; ++i)

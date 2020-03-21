@@ -1,17 +1,15 @@
 /*
-    [1Â÷] ¼ÅÆ²¹ö½º
-    https://programmers.co.kr/learn/courses/30/lessons/17678
+	[1ì°¨] ì…”í‹€ë²„ìŠ¤
+	https://programmers.co.kr/learn/courses/30/lessons/17678
 
-    0.  Ç®ÀÌ Àü ¼¼ÆÃ
-            - ÀÔ·ÂµÇ´Â ½Ã°£À» ºĞÀ¸·Î ¹Ù²ã¼­ ÀúÀåÇß´Ù.
-            - Å©·çµéÀÇ µµÂø½Ã°£À» ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß´Ù.
-    1.  t ºĞ¸¶´Ù ÇöÀç ½Ã°¢(now) ÀÌÇÏ¿¡ µµÂøÇÑ m ¸íÀÇ Å©·çµéÀ» ¹ö½º¿¡ ÅÂ¿ü´Ù.
-    2.  ´ÙÀ½À¸·Î ¹ö½º¿¡ Å» Å©·ç°¡ ¸¶Áö¸· ¹ö½ºº¸´Ù ´Ê°Ô µµÂøÇÑ´Ù¸é,
-        Á¤´äÀ» ¸¶Áö¸· ¹ö½ºÀÇ µµÂø ½Ã°£À¸·Î ÇØÁÖ¾ú´Ù.
-    3.  2¹ø°ú °°ÀÌ ¸¶Áö¸· ¹ö½º°¡ ÀÚ¸®°¡ ³²´Â °æ¿ì¿¡´Â
-        Á¤´äÀº ¸¶Áö¸· ¹ö½ºÀÇ µµÂø ½Ã°£ÀÌ´Ù.
-    4.  ¸¶Áö¸· ¹ö½ºÀÇ ÀÚ¸®°¡ ³²Áö ¾Ê¾ÒÀ» ¶§´Â
-        Á¤´äÀº ¸¶Áö¸·À¸·Î Åº Å©·çÀÇ ½Ã°£ - 1ºĞÀÌ´Ù.
+	0.  í’€ì´ ì „ ì„¸íŒ…
+			- ì…ë ¥ë˜ëŠ” ì‹œê°„ì„ ë¶„ìœ¼ë¡œ ë°”ê¿”ì„œ ì €ì¥í–ˆë‹¤.
+			- í¬ë£¨ë“¤ì˜ ë„ì°©ì‹œê°„ì„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆë‹¤.
+	1.  t ë¶„ë§ˆë‹¤ í˜„ì¬ ì‹œê°(now) ì´í•˜ì— ë„ì°©í•œ m ëª…ì˜ í¬ë£¨ë“¤ì„ ë²„ìŠ¤ì— íƒœìš´ë‹¤.
+		1)  ë§ˆì§€ë§‰ ë²„ìŠ¤ì˜ ìë¦¬ê°€ ë‚¨ëŠ” ê²½ìš°
+			a. ì •ë‹µì€ ë§ˆì§€ë§‰ ë²„ìŠ¤ì˜ ë„ì°© ì‹œê°„ì´ë‹¤.
+		2)  ë§ˆì§€ë§‰ ë²„ìŠ¤ì˜ ìë¦¬ê°€ ë‚¨ì§€ ì•ŠëŠ” ê²½ìš°
+			a. ì •ë‹µì€ ë§ˆì§€ë§‰ìœ¼ë¡œ íƒ„ í¬ë£¨ì˜ ì‹œê°„ - 1ë¶„ì´ë‹¤.
 */
 #include <algorithm>
 #include <iostream>
@@ -19,93 +17,76 @@
 #include <vector>
 using namespace std;
 
-vector<int> numTable;
-string answer = "";
-
 int toNum(string &t)
 {
-    int hour = (t[0] - '0') * 10 + t[1] - '0';
-    int minute = (t[3] - '0') * 10 + t[4] - '0';
-    return hour * 60 + minute;
+	int hour = (t[0] - '0') * 10 + t[1] - '0';
+	int minute = (t[3] - '0') * 10 + t[4] - '0';
+	return hour * 60 + minute;
 }
 
 string toTime(int num)
 {
-    string hour, minute;
-    string share = to_string(num / 60);
-    string remainder = to_string(num % 60);
+	string hour, minute;
+	string share = to_string(num / 60);
+	string remainder = to_string(num % 60);
 
-    if (num >= 600)
-        hour = share;
-    else
-        hour = "0" + share;
+	if (num >= 600)
+		hour = share;
+	else
+		hour = "0" + share;
 
-    if (num % 60 >= 10)
-        minute = remainder;
-    else
-        minute = "0" + remainder;
+	if (num % 60 >= 10)
+		minute = remainder;
+	else
+		minute = "0" + remainder;
 
-    return hour + ":" + minute;
+	return hour + ":" + minute;
 }
 
-// 0. n == 0 ÀÏ ¶§ ¸¶Áö¸· ¹ö½º
-// 1. ¸¶Áö¸· ¹ö½º°¡ ÀÚ¸®°¡ ³²¾ÒÀ» ¶§ : ¸¶Áö¸· ¹ö½º µµÂø ½Ã°£
-// 2. ¸¶Áö¸· ¹ö½º°¡ ÀÚ¸®°¡ ³²Áö ¾Ê¾ÒÀ» ¶§ : ¹ö½º¿¡ ¸¶Áö¸·À¸·Î Ã¤¿î Å©·ç -1 ºĞ
-void sovle(int n, int t, int m)
+string sovle(int n, int t, int m, vector<int> &numTable)
 {
-    int i = n;
-    int now = 540 - t;
-    int last = 0; // ¸¶Áö¸·À¸·Î Åº Å©·çÀÇ Å¾½Â ½Ã°¢
-    size_t idx = 0;
+	int		i = n;
+	int		now = 540 - t;
+	int		last_boarding_time = 0;
+	size_t	idx = 0;
+	string	answer = "";
 
-    while (i--)
-    {
-        now += t;
-        int spare = m; // ³²Àº ÁÂ¼®
+	while (i--)
+	{
+		int vacancy = m;
+		now += t;
 
-        if (numTable[idx] > now + i * t)
-        {
-            answer = toTime(540 + (n - 1) * t);
-            return;
-        }
-
-        for (; idx < numTable.size(); ++idx)
-        {
-            if (numTable[idx] <= now && spare > 0)
-            {
-                --spare;
-                last = numTable[idx];
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        if (i == 0)
-        {
-            if (spare > 0)
-            {
-                answer = toTime(540 + (n - 1) * t);
-            }
-            else
-            {
-                answer = toTime(last - 1);
-            }
-        }
-    }
+		if (numTable[idx] > now + i * t)
+		{
+			answer = toTime(540 + (n - 1) * t);
+			return;
+		}
+		for (; idx < numTable.size(); ++idx)
+		{
+			if (numTable[idx] <= now && vacancy > 0)
+			{
+				--vacancy;
+				last_boarding_time = numTable[idx];
+			}
+			else
+				break;
+		}
+		if (i == 0)
+		{
+			if (vacancy > 0)
+				answer = toTime(540 + (n - 1) * t);
+			else
+				answer = toTime(last_boarding_time - 1);
+		}
+	}
+	return answer;
 }
 
 string solution(int n, int t, int m, vector<string> timetable)
 {
 
-    for (size_t i = 0; i < timetable.size(); ++i)
-    {
-        numTable.push_back(toNum(timetable[i]));
-    }
-    sort(numTable.begin(), numTable.end());
-
-    sovle(n, t, m);
-
-    return answer;
+	for (size_t i = 0; i < timetable.size(); ++i)
+		numTable.push_back(toNum(timetable[i]));
+	sort(numTable.begin(), numTable.end());
+	return sovle(n, t, m, numTable);
 }

@@ -1,16 +1,18 @@
 /*
-	¿ÏÁÖÇÏÁö ¸øÇÑ ¼±¼ö
+	ì™„ì£¼í•˜ì§€ ëª»í•œ ì„ ìˆ˜
 	https://programmers.co.kr/learn/courses/30/lessons/42576
 
-	Æ®¶óÀÌ³ëµå¿¡ ¿ÏÁÖÇÑ »ç¶÷µéÀ» ÀÔ·ÂÇÏ°í, Âü°¡ÀÚ Áß¿¡¼­ Æ®¶óÀÌ³ëµå¿¡¼­
-	¸ø Ã£Àº Âü°¡ÀÚ´Â ¿ÏÁÖÇÏÁö ¸øÇÑ Âü°¡ÀÚÀÌ´Ù.
+	íŠ¸ë¼ì´ë…¸ë“œì— ì™„ì£¼ìžë¥¼ ìž…ë ¥í•œë‹¤.
+	íŠ¸ë¼ì´ë…¸ë“œì— ì—†ëŠ” ì°¸ê°€ìžëŠ” ë¯¸ì™„ì£¼ìžë‹¤.	
+	ë™ëª…ì´ì¸ì„ ì²˜ë¦¬í•˜ê¸° ìœ„í•´ 'int cnt'ë¡œ í•´ë‹¹ ì´ë¦„ì„ ê°€ì§„ ì‚¬ëžŒì˜ ìˆ˜ë¥¼ í‘œì‹œí–ˆë‹¤.
+	ì™„ì£¼ìžì„ ìž…ë ¥í•  ë•Œ 'NULL'ì— ë„ì°©í•˜ë©´, 'cnt'ë¥¼ 1 ì¦ê°€ì‹œì¼°ë‹¤. 
 	
-	µ¿¸íÀÌÀÎÀÌ ÀÖÀ» ¼ö ÀÖ±â ¶§¹®¿¡ ¿ÏÁÖÇÑ »ç¶÷µéÀ» ÀÔ·ÂÇÒ ¶§ ÀÌ¸§ÀÇ ¸¶Áö¸· ±ÛÀÚ¶ó¸é
-	cnt °ªÀ» 1 Áõ°¡½ÃÄÑ¼­ ÇØ´ç ÀÌ¸§À» °¡Áø »ç¶÷ÀÇ ¼ö¸¦ Ç¥½ÃÇß´Ù.
-	
-	Æ®¶óÀÌ³ëµå¿¡¼­ Âü°¡ÀÚµéÀ» Ã£À» ¶§, ÇØ´ç ÀÌ¸§ÀÇ cnt °ªÀÌ 1 ÀÌ»óÀÏ ¶§¸¸
-	true¸¦ ¸®ÅÏÇÏ°í ÇØ´ç ÀÌ¸§ÀÇ cnt¸¦ 1 °¨¼Ò½ÃÄ×´Ù.
-	¸®ÅÏ °ªÀÌ falseÀÎ ÀÌ¸§Àº ¿ÏÁÖÇÏÁö ¸øÇÑ Âü°¡ÀÚÀÌ±â ¶§¹®¿¡ ÇØ´ç ÀÌ¸§À» answer¿¡ ´ëÀÔÇÑ´Ù.
+	íŠ¸ë¼ì´ë…¸ë“œì—ì„œ ì°¸ê°€ìžê°€ ì™„ì£¼ìžì¸ì§€ í™•ì¸í•˜ëŠ” ê²ƒì€ ë‹¤ìŒê³¼ ê°™ë‹¤.
+	1. ì´ë¦„ì˜ 'cnt'ê°€ 0 ì´ˆê³¼ì¸ ê²½ìš°
+		1) í•´ë‹¹ ì´ë¦„ì˜ 'cnt' 1 ê°ì†Œ
+		2) ì™„ì£¼ìžì´ë¯€ë¡œ 'true'ë¥¼ ë¦¬í„´
+	2. ì´ë¦„ì˜ 'cnt'ê°€ 0 ì´í•˜ì¸ ê²½ìš°
+		1) ë¯¸ì™„ì£¼ìžì´ë¯€ë¡œ 'false'ë¥¼ ë¦¬í„´
 */
 #include <string>
 #include <vector>
@@ -24,8 +26,8 @@ int toNum(char next)
 
 struct TrieNode
 {
-	TrieNode *children[26];
 	int cnt;
+	TrieNode *children[26];
 
 	TrieNode() : cnt(0)
 	{
@@ -42,31 +44,26 @@ struct TrieNode
 			++cnt;
 			return;
 		}
-		else
-		{
-			int next = toNum(*key);
-			if (children[next] == NULL)
-				children[next] = new TrieNode();
-			children[next]->insert(key + 1);
-		}
+
+		int next = toNum(*key);
+		if (children[next] == NULL)
+			children[next] = new TrieNode();
+		children[next]->insert(key + 1);
 	}
 
 	bool find(const char *key)
 	{
 		if (*key == 0)
 		{
-			if (cnt > 0)
-			{
-				--cnt;
+			if (cnt-- > 0)
 				return true;
-			}
 			else
 				return false;
 		}
 
 		int next = toNum(*key);
 		if (children[next] == 0)
-			return false; // ¿©±â¿¡´Â ¿Ã ÀÏ ¾øÀ» µí
+			return false;
 		return children[next]->find(key + 1);
 	}
 };
@@ -75,19 +72,16 @@ string solution(vector<string> participant, vector<string> completion)
 {
 	string answer = "";
 	TrieNode *root = new TrieNode();
+
 	for (size_t i = 0; i < completion.size(); ++i)
-	{
 		root->insert(completion[i].c_str());
-	}
 
 	for (size_t i = 0; i < participant.size(); ++i)
 	{
-		if (root->find(participant[i].c_str()))
-		{
-		}
-		else
+		if (!root->find(participant[i].c_str()))
 		{
 			answer = participant[i];
+			break;
 		}
 	}
 	return answer;

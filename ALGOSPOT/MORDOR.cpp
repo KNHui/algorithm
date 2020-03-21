@@ -16,8 +16,8 @@ const int MAX = numeric_limits<int>::max();
 
 struct RMQ
 {
-    int n;
-    vector<int> rangeMin;
+    int			n;
+    vector<int>	rangeMin;
 
     RMQ(const vector<int> &array)
     {
@@ -72,8 +72,8 @@ struct RMQ
 
 void solve(int N, int Q)
 {
-    vector<int> height;
-    vector<int> minusHeight;
+    vector<int>	height;
+    vector<int>	minusHeight;
     for (int j = 0; j < N; ++j)
     {
         int h;
