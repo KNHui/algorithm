@@ -1,19 +1,24 @@
 /*
-	¾È³çÈ÷, ±×¸®°í ¹°°í±â´Â °í¸¶¿ü¾î¿ä!
-	https://www.algospot.com/judge/problem/read/SOLONG#
+	ì•ˆë…•ížˆ, ê·¸ë¦¬ê³  ë¬¼ê³ ê¸°ëŠ” ê³ ë§ˆì› ì–´ìš”!
+	https://www.algospot.com/judge/problem/read/SOLONG
 
-	Æ®¶óÀÌ ¾Ë°í¸®ÁòÀ» »ç¿ëÇÏ¿©, »çÀü¿¡ ÀúÀåµÈ ´Ü¾îµéÀ» ÀúÀåÇÏ°í, ÀÔ·ÂÇØ¾ß ÇÏ´Â È½¼ö¸¦ ±¸ÇÑ´Ù.
+	íŠ¸ë¼ì´ ì•Œê³ ë¦¬ì¦˜ì„ ì‚¬ìš©í•˜ì—¬ ì‚¬ì „ì„ ì €ìž¥í•˜ê³ , ìž…ë ¥í•´ì•¼ í•˜ëŠ” íšŸìˆ˜ë¥¼ êµ¬í–ˆë‹¤.
 
-	»çÀü¿¡ ÀúÀåµÈ ´Ü¾îµéÀ» ÀÔ·Â¹Þ°í ³ª¼­, ÃâÇö ºóµµ ³»¸²Â÷¼øÀ¸·Î Á¤·ÄÇÏ°í, ÃâÇö ºóµµ°¡ °°´Ù¸é »çÀü ¼øÀ¸·Î Á¤·ÄÇÑ´Ù.
-	Á¤·Ä ÈÄ¿¡ Æ®¶óÀÌ¿¡ ´Ü¾îµéÀ» »ðÀÔÇÏ´Âµ¥,
-	°¢ ³ëµåÀÇ first¿¡´Â ÇØ´ç ³ëµå¿¡¼­ ÅÇ Å°¸¦ ´©¸£¸é ¿Ï¼ºµÇ´Â ´Ü¾îÀÇ ÀÎµ¦½º°¡ µé¾î°¡°í,
-	terminal¿¡´Â ÇØ´ç ³ëµå¿¡¼­ ³¡³­ ´Ü¾îÀÇ ÀÎµ¦½º°¡ µé¾î°£´Ù.
+	ì‚¬ì „ì— ì €ìž¥ëœ ë‹¨ì–´ë¥¼ ìž…ë ¥ë°›ê³  ë‚˜ì„œ, ì¶œí˜„ ë¹ˆë„ ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í•œë‹¤.
+	ì¶œí˜„ ë¹ˆë„ê°€ ê°™ë‹¤ë©´ ì‚¬ì „ ìˆœìœ¼ë¡œ ì •ë ¬í•œë‹¤.
+	ê·¸ í›„, íŠ¸ë¼ì´ì— ë‹¨ì–´ë¥¼ ì‚½ìž…í•œë‹¤.
+	ê° ë…¸ë“œì˜ 'int first'ì—ëŠ” í•´ë‹¹ ë…¸ë“œì—ì„œ íƒ­ í‚¤ë¥¼ ëˆ„ë¥´ë©´ ì™„ì„±ë˜ëŠ” ë‹¨ì–´ì˜ ì¸ë±ìŠ¤ê°€ ë“¤ì–´ê°„ë‹¤.
+	'int terminal'ì—ëŠ” í•´ë‹¹ ë…¸ë“œì—ì„œ ëë‚œ ë‹¨ì–´ì˜ ì¸ë±ìŠ¤ê°€ ë“¤ì–´ê°„ë‹¤.
 
-	Å¸ÀÌÇÎÇØ¾ß ÇÏ´Â ¹®ÀÚ¿­ÀÇ °¢ ´Ü¾î°¡ Æ®¶óÀÌ¿¡ ¾ø´Ù¸é ´Ü¾îÀÇ ±æÀÌ¸¦ answer¿¡ ´õÇÏ°í,
-	Æ®¶óÀÌ¿¡ ÀÖ´Ù¸é, type ÇÔ¼ö¸¦ »ç¿ëÇÏ¿© ÃÖ¼Ò Å¸ÀÌÇÎ ¼ö¸¦ ±¸ÇÑ´Ù.
-	type ÇÔ¼ö¿¡¼­´Â ÇöÀç ³ëµå¿¡¼­ firstÀÇ ÀÎµ¦½º°¡ ÀÚ½ÅÀÇ ÀÎµ¦½º¶ó¸é
-	ÅÇ Å°¸¦ ´©¸£¸é ÀÚµ¿¿Ï¼ºÀÌ µÇ¹Ç·Î, 1À» ¸®ÅÏÇÑ´Ù
-	±×·¸Áö ¾Ê´Ù¸é ´ÙÀ½ ¹®ÀÚÀÇ ³ëµå·Î ³Ñ¾î°¡¸é¼­ ¹®ÀÚ ÇÏ³ª¸¦ Å¸ÀÌÇÎÇØ¾ß ÇÏ¹Ç·Î °á±£°ª¿¡ 1À» ´õÇØÁØ´Ù.
+	ë‹¨ì–´ì˜ ìž…ë ¥ íšŸìˆ˜ëŠ” ë‹¤ìŒê³¼ ê°™ì´ êµ¬í–ˆë‹¤.
+	1. ìž…ë ¥í•´ì•¼ í•˜ëŠ” ë‹¨ì–´ê°€ íŠ¸ë¼ì´ì— ì—†ëŠ” ê²½ìš°
+		1) ë‹¨ì–´ì˜ ê¸¸ì´ë¥¼ answerì— ë”í•œë‹¤.
+	1. ìž…ë ¥í•´ì•¼ í•˜ëŠ” ë‹¨ì–´ê°€ íŠ¸ë¼ì´ì— ìžˆëŠ” ê²½ìš°
+		1) type í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì—¬ ìµœì†Œ íƒ€ì´í•‘ ìˆ˜ë¥¼ êµ¬í•œë‹¤.
+			a. í˜„ìž¬ ë…¸ë“œì—ì„œ firstì˜ ì¸ë±ìŠ¤ê°€ ìžì‹ ì˜ ì¸ë±ìŠ¤ì¸ ê²½ìš°
+				a) íƒ­ í‚¤ë¥¼ ëˆ„ë¥´ë©´ ìžë™ì™„ì„±ì´ ë˜ë¯€ë¡œ, 1ì„ ë¦¬í„´í•œë‹¤
+			b. í˜„ìž¬ ë…¸ë“œì—ì„œ firstì˜ ì¸ë±ìŠ¤ê°€ ìžì‹ ì˜ ì¸ë±ìŠ¤ê°€ ì•„ë‹Œ ê²½ìš°
+				a) ë‹¤ìŒ ë¬¸ìžì˜ ë…¸ë“œë¡œ ë„˜ì–´ê°€ë©´ì„œ ë¬¸ìž í•˜ë‚˜ë¥¼ íƒ€ì´í•‘í•´ì•¼ í•˜ë¯€ë¡œ ìž¬ê·€ì˜ ê²°ê´ê°’ì— 1ì„ ë”í•´ì¤€ë‹¤.
 */
 
 #include <algorithm>
@@ -90,7 +95,7 @@ typedef struct TrieNode
         }
     }
 
-    // ÇØ´ç ³ëµå¿¡¼­ idxÀÇ ´Ü¾î¸¦ Ä¡±âÀ§ÇØ ¸î ¹ø ´õ Å¸ÀÌÇÎ ÇØ¾ßÇÏ´Â°¡
+    // ï¿½Ø´ï¿½ ï¿½ï¿½å¿¡ï¿½ï¿½ idxï¿½ï¿½ ï¿½Ü¾î¸¦ Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½Ï´Â°ï¿½
     int type(const char *key, int idx)
     {
         if (*key == 0)
@@ -119,14 +124,14 @@ int solve()
     vector<pair<int, string>> dict;
     tn root;
 
-    answer = M - 1; // ½ºÆäÀÌ½º¹Ù
+    answer = M - 1; // ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½
     for (int i = 0; i < N; ++i)
     {
         cin >> ip >> weight;
         dict.push_back(make_pair(-weight, ip));
     }
 
-    // Á¤·Ä ÈÄ Æ®¶óÀÌ »ý¼º
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     sort(dict.begin(), dict.end());
     for (int i = 0; i < N; ++i)
     {
@@ -134,7 +139,7 @@ int solve()
     }
     root.first = -1;
 
-    // Å¸ÀÌÇÎ ¼ö ±¸ÇÏ±â
+    // Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
     tn *node;
     int result;
     for (int i = 0; i < M; ++i)
