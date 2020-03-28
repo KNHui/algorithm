@@ -1,10 +1,10 @@
 /*
 	H-Index
 	https://programmers.co.kr/learn/courses/30/lessons/42747
-
-	citationsÀ» ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÏ°í, 	citationsÀ» ¾Õ¿¡¼­ºÎÅÍ ¼øÈ¸ÇÏ¸é¼­
-	citations[i]°¡ answerº¸´Ù ÀÛÀ¸¸é H ±âÁØ ¹Ì´ŞÀÌ¹Ç·Î answer¸¦ ÁÙÀÌ°í Å½»öÀ» °è¼ÓÇÏ°í,
-	citations[i]°¡ answerº¸´Ù Å©¸é H ±âÁØ ÃæÁ·ÀÌ¹Ç·Î answer¸¦ ¸®ÅÏÇÑ´Ù.
+	
+	citationsì„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í•˜ê³ , 	citationsì„ ì•ì—ì„œë¶€í„° ìˆœíšŒí•˜ë©´ì„œ
+	citations[i]ê°€ answerë³´ë‹¤ ì‘ìœ¼ë©´ H ê¸°ì¤€ ë¯¸ë‹¬ì´ë¯€ë¡œ answerë¥¼ ì¤„ì´ê³  íƒìƒ‰ì„ ê³„ì†í•˜ê³ ,
+	citations[i]ê°€ answerë³´ë‹¤ í¬ë©´ H ê¸°ì¤€ ì¶©ì¡±ì´ë¯€ë¡œ answerë¥¼ ë¦¬í„´í•œë‹¤.
 */
 #include <vector>
 #include <algorithm>
@@ -13,15 +13,15 @@ using namespace std;
 
 int solution(vector<int> citations)
 {
-    int answer = citations.size();
-    sort(citations.begin(), citations.end());
+	int answer = citations.size();
+	sort(citations.begin(), citations.end());
 
-    for (size_t i = 0; i < citations.size(); ++i)
-    {
-        if (citations[i] >= answer)
-            break;
-        else
-            --answer;
-    }
-    return answer;
+	for (size_t i = 0; i < citations.size(); ++i)
+	{
+		if (citations[i] >= answer)
+			break;
+		else
+			--answer;
+	}
+	return answer;
 }

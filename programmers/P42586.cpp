@@ -1,13 +1,12 @@
 /*
-    ±â´É°³¹ß
+	ê¸°ëŠ¥ê°œë°œ
 	https://programmers.co.kr/learn/courses/30/lessons/42586
 
-	³²¾ÆÀÖ´Â ÀÛ¾÷ Áß¿¡¼­ ¿ì¼±¼øÀ§°¡ °¡Àå ³ôÀº ÀÛ¾÷ÀÌ
-	¹èÆ÷¿¡ µå´Â ½Ã°£À» ³ª´©±â¿Í ³ª¸ÓÁö ¿¬»êÀ» »ç¿ëÇÏ¿© ±¸ÇÑ´Ù.
-	ÇØ´ç ½Ã°£ÀÌ Áö³µÀ» ¶§, ´ÙÀ½ ¿ì¼±¼øÀ§ÀÇ ÀÛ¾÷µéÀÌ ¿Ï·áµÇ¾ú´ÂÁö Å½»öÇÏ¸é¼­
-	¹èÆ÷µÉ ¼ö ÀÖ´Â ÀÛ¾÷ÀÇ ¼ö¸¦ answer º¤ÅÍÀÇ ³¡¿¡ ÀúÀåÇÑ´Ù.
+	ë‚¨ì•„ìˆëŠ” ì‘ì—… ì¤‘ì—ì„œ ìš°ì„ ìˆœìœ„ê°€ ê°€ì¥ ë†’ì€ ì‘ì—…ì´
+	ë°°í¬ì— ë“œëŠ” ì‹œê°„ì„ ë‚˜ëˆ„ê¸°ì™€ ë‚˜ë¨¸ì§€ ì—°ì‚°ì„ ì‚¬ìš©í•˜ì—¬ êµ¬í•œë‹¤.
+	í•´ë‹¹ ì‹œê°„ì´ ì§€ë‚¬ì„ ë•Œ, ë‹¤ìŒ ìš°ì„ ìˆœìœ„ì˜ ì‘ì—…ë“¤ì´ ì™„ë£Œë˜ì—ˆëŠ”ì§€ íƒìƒ‰í•˜ë©´ì„œ
+	ë°°í¬ë  ìˆ˜ ìˆëŠ” ì‘ì—…ì˜ ìˆ˜ë¥¼ ì €ì¥í•œë‹¤.
 */
-
 #include <string>
 #include <vector>
 
@@ -15,30 +14,26 @@ using namespace std;
 
 vector<int> solution(vector<int> progresses, vector<int> speeds)
 {
-    vector<int> answer;
-    int day = 0;
+	vector<int> answer;
+	int day = 0;
 
-    for (size_t i = 0; i < progresses.size();)
-    {
-        int workload = 100 - (progresses[i] + day * speeds[i]);
-        int work_time = workload / speeds[i];
-        int remainder = workload % speeds[i];
+	for (size_t i = 0; i < progresses.size();)
+	{
+		int workload = 100 - (progresses[i] + day * speeds[i]);
+		int work_time = workload / speeds[i];
+		int remainder = workload % speeds[i];
 
-        if (remainder > 0)
-        {
-            ++work_time;
-        }
-        day += work_time;
+		if (remainder > 0)
+			++work_time;
+		day += work_time;
 
-        int count = 0;
-        while (i < progresses.size() && progresses[i] + day * speeds[i] >= 100)
-        {
-            ++count;
-            ++i;
-        }
-
-        answer.push_back(count);
-    }
-
-    return answer;
+		int count = 0;
+		while (i < progresses.size() && progresses[i] + day * speeds[i] >= 100)
+		{
+			++count;
+			++i;
+		}
+		answer.push_back(count);
+	}
+	return answer;
 }

@@ -1,62 +1,63 @@
 /*
-    °¡Àå Å« ¼ö
-    https://programmers.co.kr/learn/courses/30/lessons/42746
+	ê°€ì¥ í° ìˆ˜
+	https://programmers.co.kr/learn/courses/30/lessons/42746
+	
+	ì²˜ìŒì—ëŠ” ì£¼ì–´ì§„ ìˆ˜ì—´ì—ì„œ ê°€ì¥ í° ìë¦¿ìˆ˜ì— ë§ì¶°ì„œ ìˆ˜ë¥¼ ì¡°ì •í•˜ì˜€ëŠ”ë°,
+	"{121, 12}"ê°€ ì£¼ì–´ì§ˆ ê²½ìš°, "{121, 121}"ê°€ ë¼ì„œ '12121'ì´ ì•„ë‹Œ '12112'ë¥¼ ë¦¬í„´í•˜ì˜€ë‹¤.
 
-    Ã³À½¿¡´Â ÁÖ¾îÁø ¼ö¿­¿¡¼­ °¡Àå Å« ÀÚ¸´¼ö¿¡ ¸ÂÃç¼­ ¼ö¸¦ Á¶Á¤ÇÏ¿´´Âµ¥,
-    {121, 12}°¡ ÁÖ¾îÁú °æ¿ì, {121, 121}·Î Á¶Á¤ÇÏ¿©¼­ "12121"ÀÌ ¾Æ´Ñ "12112"¸¦ ¸®ÅÏÇÏ¿´´Ù.
-
-    ±×·¡¼­ numbers ¿ä¼ÒÀÇ ÃÖ´ë ÀÚ¸´¼öÀÎ 4ÀÚ¸®¿¡ ¸ÂÃç¼­ ¼öµéÀ» Á¶Á¤ÇÏ¿´°í,
-    Á¶Á¤µÈ ¼öµé¿¡ -1À» °öÇÏ°í ÀÎµ¦½º¿Í ÇÔ²² ÀúÀåÇÏ¿´´Ù.
-    ±×¸®°í ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÏ¿© Àı´ñ°ªÀÌ Å« ¼ø¼­´ë·Î answer¿¡ ´ã±âµµ·Ï ÇÏ¿´´Ù.
+	ê·¸ë˜ì„œ ìˆ˜ë“¤ì„ ëª¨ë‘ 4ìë¦¬ ìˆ˜ê°€ ë˜ë„ë¡ ì¡°ì •í–ˆë‹¤.
+	ex)
+	123	- 1231
+	23	- 2323
+	3	- 3333
 */
-
-#include <algorithm>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
 int getDigit(int number)
 {
-    int digit = 0;
+	int digit = 0;
 
-    while (number > 0)
-    {
-        number /= 10;
-        ++digit;
-    }
-    return digit;
+	while (number > 0)
+	{
+		number /= 10;
+		++digit;
+	}
+	return digit;
 }
 
 string solution(vector<int> numbers)
 {
-    string answer = "";
-    vector<int> digits;
-    vector<pair<int, int>> newNumbers;
+	string answer = "";
+	vector<int> digits;
+	vector<pair<int, int>> newNumbers;
 
-    for (size_t i = 0; i < numbers.size(); ++i)
-    {
-        int digit = getDigit(numbers[i]);
-        digits.push_back(digit);
-    }
+	for (size_t i = 0; i < numbers.size(); ++i)
+	{
+		int digit = getDigit(numbers[i]);
+		digits.push_back(digit);
+	}
 
-    // numbersÀÇ ¼öµéÀ» 4 ÀÚ¸´¼ö·Î ¸ÂÃã
-    for (size_t i = 0; i < numbers.size(); ++i)
-    {
-        string temp = to_string(numbers[i]);
-        for (int j = 0; 4 - digits[i] > 0; ++j)
-        {
-            temp += temp[j];
-            ++digits[i];
-        }
-        newNumbers.push_back({atoi(temp.c_str()) * -1, i});
-    }
+	// numbersì˜ ìˆ˜ë“¤ì„ 4 ìë¦¿ìˆ˜ë¡œ ë§ì¶¤
+	for (size_t i = 0; i < numbers.size(); ++i)
+	{
+		string temp = to_string(numbers[i]);
+		for (int j = 0; 4 - digits[i] > 0; ++j)
+		{
+			temp += temp[j];
+			++digits[i];
+		}
+		newNumbers.push_back({atoi(temp.c_str()) * -1, i});
+	}
 
-    sort(newNumbers.begin(), newNumbers.end());
-    for (size_t i = 0; i < newNumbers.size(); ++i)
-        answer += to_string(numbers[newNumbers[i].second]);
+	sort(newNumbers.begin(), newNumbers.end());
+	for (size_t i = 0; i < newNumbers.size(); ++i)
+		answer += to_string(numbers[newNumbers[i].second]);
 
-    if (atoi(answer.c_str()) == 0)
-        answer = "0";
-    return answer;
+	if (atoi(answer.c_str()) == 0)
+		answer = "0";
+	return answer;
 }
