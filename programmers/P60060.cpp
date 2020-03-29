@@ -1,26 +1,24 @@
 /*
-	[2020Ä«Ä«¿À°øÃ¤] °¡»ç °Ë»ö
+	[2020ì¹´ì¹´ì˜¤ê³µì±„] ê°€ì‚¬ ê²€ìƒ‰
 	https://programmers.co.kr/learn/courses/30/lessons/60060
 
-	ÀÔ·ÂµÈ °¡»ç ´Ü¾î¸¦ ÀÌ¿ëÇÏ¿© ÀÏÄ¡ÇÏ´Â °Ë»ö Å°¿öµå¸¦ Ã£´Â ¹®Á¦ÀÌ±â¿¡,
-	°£´ÜÇÑ Æ®¶óÀÌ ÀÚ·á±¸Á¶ ¹®Á¦ÀÎ ÁÙ ¾Ë¾ÒÀ¸³ª,
-	'?' ¶§¹®¿¡ ¸ðµç ´Ü¾î¸¦ ³¡±îÁö Ã£°Ô µÇ¸é ½Ã°£ ÃÊ°ú·Î È¿À²¼º Å×½ºÆ®¸¦ Åë°ú ¸ø ÇÑ´Ù.
+	ìž…ë ¥ëœ ê°€ì‚¬ ë‹¨ì–´ë¥¼ ì´ìš©í•˜ì—¬ ì¼ì¹˜í•˜ëŠ” ê²€ìƒ‰ í‚¤ì›Œë“œë¥¼ ì°¾ëŠ” ë¬¸ì œë‹¤.
 
-	±×·¡¼­ °¡»ç ´Ü¾î¸¦ ÀÔ·ÂÇÒ ¶§, ´Ü¾îÀÇ Á¢µÎ»ç¸¦ °øÅëÀ¸·Î °¡Áö´Â ¼ö¸¦ cnt¿¡ ÀúÀåÇÑ´Ù.
-	°Ë»ö Å°¿öµå¸¦ Æ®¶óÀÌ¿¡¼­ Ã£À» ¶§ '?'°¡ ³ª¿Â´Ù¸é,
-	»ý¼ºµÈ childrenµéÀÇ cnt¸¦ ´õÇØ¼­ ¹ÝÈ¯ÇÑ´Ù.
+	ê°€ì‚¬ ë‹¨ì–´ë¥¼ íŠ¸ë¼ì´ì— ìž…ë ¥í•  ë•Œ, ê³µí†µ ì ‘ë‘ì‚¬ì˜ ìˆ˜ë¥¼ 'int cnt'ì— ì €ìž¥í•œë‹¤.
+	ê²€ìƒ‰ í‚¤ì›Œë“œë¥¼ íŠ¸ë¼ì´ì—ì„œ ì°¾ì„ ë•Œ '?'ê°€ ë‚˜ì˜¨ë‹¤ë©´, ìžì‹ ë…¸ë“œì˜ 'cnt' í•©ì„ ë°˜í™˜í•œë‹¤.
 
-	±×¸®°í ¼­·Î ´Ù¸¥ ±æÀÌ¸¦ °¡Áö¸é¼­, °°Àº Á¢µÎ»ç¸¦ °¡Áö´Â °¡»ç ´Ü¾îÀÇ Áßº¹À» ÇÇÇÏ±âÀ§ÇØ
-	Trie *root[]¸¦ ¼±¾ðÇÏ°í, Å©±â´Â °¡»ç ´Ü¾îÀÇ ÃÖ´ë ±æÀÌÀÎ 10000 + 1·Î Á¤Çß´Ù.
+	ì„œë¡œ ë‹¤ë¥¸ ê¸¸ì´ë¥¼ ê°€ì§€ë©´ì„œ, ê°™ì€ ì ‘ë‘ì‚¬ë¥¼ ê°€ì§€ëŠ” ê°€ì‚¬ ë‹¨ì–´ê°€ ìžˆì„ ìˆ˜ ìžˆë‹¤.
+	ê·¸ëž˜ì„œ ë‹¨ì–´ ê¸¸ì´ë§ˆë‹¤ ë‹¤ë¥¸ íŠ¸ë¼ì´ì— ì €ìž¥í–ˆë‹¤.
 
-	±×¸®°í '?'´Â °Ë»ö Å°¿öµåÀÇ ¾Õ ¶Ç´Â µÚ¿¡¼­¸¸ ³ªÅ¸³­´Ù.
-	'?'°¡ µÚ¿¡¼­ ³ª¿À´Â °æ¿ì´Â °øÅë Á¢µÎ»ç¸¦ °¡Áö´Â ´Ü¾îÀÇ ¼ö¸¦ Ã£À¸¸é µÇ´Âµ¥,
-	'?'°¡ ¾Õ¿¡¼­ ³ª¿À´Â °æ¿ì¿¡´Â °øÅë Á¢¹Ì»ç¸¦ °¡Áö´Â ´Ü¾îÀÇ ¼ö¸¦ Ã£¾Æ¾ß ÇÑ´Ù.
-	ÀÌ¸¦ À§ÇØ¼­ °¡»ç ´Ü¾î¸¦ µÚÁý¾î¼­ ÀÔ·Â¹Þ´Â Trie *root[]¸¦ ¼±¾ðÇß´Ù.
+	'?'ëŠ” ê²€ìƒ‰ í‚¤ì›Œë“œì˜ ì•ž ë˜ëŠ” ë’¤ì—ì„œë§Œ ë‚˜íƒ€ë‚œë‹¤.
+	'?'ê°€ ì•žì—ì„œ ë‚˜íƒ€ë‚˜ë©´ ê°€ì‚¬ ë‹¨ì–´ë¥¼ ë’¤ì§‘ì–´ì„œ ê³µí†µ ì ‘ë¯¸ì‚¬ë¥¼ ì°¾ë„ë¡ í–ˆë‹¤.
+	1. '?'ê°€ ë’¤ì—ì„œ ë‚˜ì˜¤ëŠ” ê²½ìš°
+		1) '?'ë¥¼ ì œì™¸í•œ í‚¤ì›Œë“œë¥¼ ê³µí†µ ì ‘ë‘ì‚¬ë¡œ ê°€ì§€ëŠ” ë‹¨ì–´ì˜ ìˆ˜ ë°˜í™˜
+	2. '?'ê°€ ì•žì—ì„œ ë‚˜ì˜¤ëŠ” ê²½ìš°
+		1) '?'ë¥¼ ì œì™¸í•œ í‚¤ì›Œë“œë¥¼ ê³µí†µ ì ‘ë¯¸ì‚¬ë¡œ ê°€ì§€ëŠ” ë‹¨ì–´ì˜ ìˆ˜ ë°˜í™˜
 */
 #include <string>
 #include <vector>
-#include <cstdlib>
 #include <algorithm>
 
 using namespace std;
@@ -32,9 +30,9 @@ int to_num(char c)
 
 typedef struct Trie
 {
-	Trie *children[26];
-	bool terminal;
-	int cnt;
+	int		cnt;
+	bool	terminal;
+	Trie	*children[26];
 
 	Trie() : terminal(false), cnt(0)
 	{
@@ -98,12 +96,12 @@ vector<int> solution(vector<string> words, vector<string> queries)
 		if (!root[size])
 			root[size] = new Trie();
 		root[size]->insert(word.c_str());
-
 		if (!rev_root[size])
 			rev_root[size] = new Trie();
 		reverse(word.begin(), word.end());
 		rev_root[size]->insert(word.c_str());
 	}
+
 	for (string query : queries)
 	{
 		int cnt = 0;
@@ -122,7 +120,6 @@ vector<int> solution(vector<string> words, vector<string> queries)
 				cnt = rev_root[size]->find(query.c_str());
 			}
 		}
-
 		answer.push_back(cnt);
 	}
 	return answer;

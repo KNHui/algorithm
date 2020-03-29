@@ -19,9 +19,9 @@ int solution(vector<int> scoville, int K)
 {
 	int answer = 0;
 	priority_queue<int, vector<int>, greater<int>> pq;
+
 	for (size_t index = 0; index < scoville.size(); ++index)
 		pq.push(scoville[index]);
-
 	while (pq.size() >= 2 && pq.top() < K)
 	{
 		int first = pq.top();

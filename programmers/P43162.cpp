@@ -1,50 +1,51 @@
 /*
-    ³×Æ®¿öÅ©
-    https://programmers.co.kr/learn/courses/30/lessons/43162
-
-    BFSÀÇ ¹İÈ¯°ªÀ» answer¿¡ ´õÇÏ´Âµ¥,
-    BFS·Î Å½»öÇÏ¸é¼­ ¹æ¹®ÇÏÁö ¾Ê¾Ò´ø ÄÄÇ»ÅÍ°¡ ³ªÅ¸³­´Ù¸é 1À» ¸®ÅÏÇÏ°í,
-    ±×·¸Áö ¾Ê´Ù¸é »õ·Î¿î ³×Æ®¿öÅ©°¡ ¾Æ´Ï¹Ç·Î 0À» ¸®ÅÏÇÑ´Ù.
+	ë„¤íŠ¸ì›Œí¬
+	https://programmers.co.kr/learn/courses/30/lessons/43162
+	
+	BFSì˜ ë°˜í™˜ê°’ì„ answerì— ë”í•˜ëŠ”ë°,
+	BFSë¡œ íƒìƒ‰í•˜ë©´ì„œ ë°©ë¬¸í•˜ì§€ ì•Šì•˜ë˜ ì»´í“¨í„°ê°€ ë‚˜íƒ€ë‚œë‹¤ë©´ 1ì„ ë¦¬í„´í•˜ê³ ,
+	ê·¸ë ‡ì§€ ì•Šë‹¤ë©´ ìƒˆë¡œìš´ ë„¤íŠ¸ì›Œí¬ê°€ ì•„ë‹ˆë¯€ë¡œ 0ì„ ë¦¬í„´í•œë‹¤.
 */
+#include <queue>
 #include <string>
 #include <vector>
-#include <queue>
 
 using namespace std;
 
 int bfs(int index, vector<vector<int>> &computers, vector<vector<bool>> &visits)
 {
-    bool isNew;
-    queue<int> iq;
+	bool isNew;
+	queue<int> iq;
 
-    isNew = false;
-    iq.push(index);
-    while (!iq.empty())
-    {
-        int i = iq.front();
-        iq.pop();
+	isNew = false;
+	iq.push(index);
+	while (!iq.empty())
+	{
+		int i = iq.front();
+		iq.pop();
 
-        for (size_t j = 0; j < computers[i].size(); ++j)
-        {
-            if (!visits[i][j] && computers[i][j])
-            {
-                isNew = true;
-                iq.push(j);
-                visits[i][j] = true;
-            }
-        }
-    }
-
-    return isNew ? 1 : 0;
+		for (size_t j = 0; j < computers[i].size(); ++j)
+		{
+			if (!visits[i][j] && computers[i][j])
+			{
+				isNew = true;
+				iq.push(j);
+				visits[i][j] = true;
+			}
+		}
+	}
+	return isNew ? 1 : 0;
 }
+
 int solution(int n, vector<vector<int>> computers)
 {
-    int answer = 0;
-    vector<bool> visit(n, false);
-    vector<vector<bool>> visits(n, visit);
-    for (int i = 0; i < n; ++i)
-    {
-        answer += bfs(i, computers, visits);
-    }
-    return answer;
+	int answer = 0;
+
+	vector<bool> visit(n, false);
+	vector<vector<bool>> visits(n, visit);
+	for (int i = 0; i < n; ++i)
+	{
+		answer += bfs(i, computers, visits);
+	}
+	return answer;
 }

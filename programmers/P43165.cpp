@@ -1,10 +1,10 @@
 /*
-    Å¸°Ù ³Ñ¹ö
-    https://programmers.co.kr/learn/courses/30/lessons/43165
-
-    DFS·Î ÃÖÁ¾ ÀÎµ¦½º±îÁö µµ´ŞÇßÀ» ¶§,
-    °ªÀÌ Å¸°Ù ³Ñ¹ö¿Í °°´Ù¸é 1À» ¸®ÅÏÇÏ°í,
-    ´Ù¸£¸é 0À» ¸®ÅÏÇÏ¸é¼­ °æ¿ìÀÇ ¼ö¸¦ ½×¾Æ³ª°£´Ù.
+	íƒ€ê²Ÿ ë„˜ë²„
+	https://programmers.co.kr/learn/courses/30/lessons/43165
+	
+	DFSë¡œ ìµœì¢… ì¸ë±ìŠ¤ê¹Œì§€ ë„ë‹¬í–ˆì„ ë•Œ,
+	ê°’ì´ íƒ€ê²Ÿ ë„˜ë²„ì™€ ê°™ë‹¤ë©´ 1ì„ ë¦¬í„´í•˜ê³ ,
+	ë‹¤ë¥´ë©´ 0ì„ ë¦¬í„´í•˜ë©´ì„œ ê²½ìš°ì˜ ìˆ˜ë¥¼ ìŒ“ì•„ë‚˜ê°„ë‹¤.
 */
 #include <string>
 #include <vector>
@@ -13,23 +13,25 @@ using namespace std;
 
 int dfs(int total, size_t index, vector<int> &numbers, int target)
 {
-    int plusCase;
-    int minusCase;
-    if (index == numbers.size())
-    {
-        if (total == target)
-            return 1;
-        else
-            return 0;
-    }
-    plusCase = dfs(total + numbers[index], index + 1, numbers, target);
-    minusCase = dfs(total - numbers[index], index + 1, numbers, target);
-    return (plusCase + minusCase);
+	int plusCase;
+	int minusCase;
+
+	if (index == numbers.size())
+	{
+		if (total == target)
+			return 1;
+		else
+			return 0;
+	}
+	plusCase = dfs(total + numbers[index], index + 1, numbers, target);
+	minusCase = dfs(total - numbers[index], index + 1, numbers, target);
+	return (plusCase + minusCase);
 }
 
 int solution(vector<int> numbers, int target)
 {
-    int answer = 0;
-    answer = dfs(0, 0, numbers, target);
-    return answer;
+	int answer = 0;
+
+	answer = dfs(0, 0, numbers, target);
+	return answer;
 }

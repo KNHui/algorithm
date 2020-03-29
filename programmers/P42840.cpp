@@ -15,7 +15,6 @@ using namespace std;
 constexpr int one[] = { 1, 2, 3, 4, 5 };
 constexpr int two[] = { 2, 1, 2, 3, 2, 4, 2, 5 };
 constexpr int three[] = { 3, 3, 1, 1, 2, 2, 4, 4, 5, 5 };
-
 constexpr auto one_size = 5;
 constexpr auto two_size = 8;
 constexpr auto three_size = 10;

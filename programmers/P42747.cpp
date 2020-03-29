@@ -14,14 +14,12 @@ using namespace std;
 int solution(vector<int> citations)
 {
 	int answer = citations.size();
-	sort(citations.begin(), citations.end());
 
+	sort(citations.begin(), citations.end());
 	for (size_t i = 0; i < citations.size(); ++i)
-	{
 		if (citations[i] >= answer)
 			break;
 		else
 			--answer;
-	}
 	return answer;
 }
