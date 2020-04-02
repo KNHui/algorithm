@@ -92,8 +92,7 @@ void solve()
 			op += direct.top();
 			direct.pop();
 		}
-
-		cout << op << endl;
+		cout << op << '\n';
 	}
 }
 

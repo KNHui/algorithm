@@ -65,7 +65,7 @@ int main(void)
 
 	init();
 	solve();
-	cout << answer << endl;
+	cout << answer << '\n';
 	return 0;
 
 }

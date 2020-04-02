@@ -89,7 +89,7 @@ void solve(int N, int Q)
         cin >> start >> finish;
         int low = rmq.query(start, finish);
         int high = abs(minusRmq.query(start, finish));
-        cout << high - low << endl;
+        cout << high - low << '\n';
     }
 }
 
