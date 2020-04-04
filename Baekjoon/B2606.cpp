@@ -11,10 +11,10 @@
 
 using namespace std;
 
-constexpr auto N_MAX = 100 + 1;
+constexpr auto MAXN = 100 + 1;
 
 int N, M;
-int d[N_MAX][N_MAX];
+int d[MAXN][MAXN];
 
 void floyd()
 {

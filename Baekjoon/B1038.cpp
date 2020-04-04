@@ -2,10 +2,11 @@
 	감소하는 수
 	https://www.acmicpc.net/problem/1038
 
-	N 번째 감소하는 수를 구해야 하는데, 모든 자릿수를 비교하면 시간이 오래 걸린다.
-	그런데 감소하는 수는 이전에 나온 수에 10을 곱하고 십의 자릿수보다 작은 숫자들을 일의 자리에 넣으면 완성된다.
-	그래서 0부터 9까지 큐에 집어넣고, 다음 차례의 감소하는 수들을 구했다.
-	cnt가 N과 같아지면 큐에 마지막으로 들어간 수를 출력했다.
+	N 번째 감소하는 수를 구하는 문제다.
+
+	'10' 이상의 감소하는 수는 다음과 같은 규칙을 가지고 있다.
+	"이전에 나온 수 * 10 + '이전에 나온 수의 일의 자리보다 작은 숫자'"
+	그래서 0부터 9까지 큐에 넣고, 위의 규칙에 따라 다음 차례의 감소하는 수들을 구했다.
 */
 #include <queue>
 #include <iostream>
@@ -16,8 +17,8 @@ int N;
 
 long long solve()
 {
-	int cnt = 0;
-	queue<long long> q;
+	int					cnt = 0;
+	queue<long long>	q;
 
 	for (int i = 0; i < 10; ++i)
 	{
@@ -50,7 +51,6 @@ int main()
 	cin.tie(NULL);
 
 	cin >> N;
-	long long ans = solve();
-	cout << ans;
+	cout << solve();
 	return 0;
 }

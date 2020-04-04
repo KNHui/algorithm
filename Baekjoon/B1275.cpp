@@ -1,11 +1,12 @@
 /*
-	Ä¿ÇÇ¼ó2
+	ì»¤í”¼ìˆ2
 	https://www.acmicpc.net/problem/1275
 
-	¹éÁØ 2042¹ø ±¸°£ ÇÕ ±¸ÇÏ±â(https://lrl.kr/X247I)¿Í °°Àº ¼¼±×¸ÕÆ® Æ®¸® ¹®Á¦´Ù.
+	ë°±ì¤€ 2042ë²ˆ "êµ¬ê°„ í•© êµ¬í•˜ê¸°"ì™€ ê°™ì€ "ì„¸ê·¸ë¨¼íŠ¸ íŠ¸ë¦¬" ë¬¸ì œë‹¤.
+	(https://github.com/KNHui/algorithm/blob/260b30312ba7b00b1e1effebf2df305c50b3f3c4/Baekjoon/B2042.cpp)
 
-	¹éÁØÀÇ ³ëÆ® ºÎºĞÀ» ÀĞ¾îº¸¸é, ±¸°£ (x, y)¿¡¼­ x°¡ yº¸´Ù Å¬ ¼öµµ ÀÖ´Ù°í ÇÑ´Ù.
-	µû¶ó¼­ x > yÀÎ °æ¿ì, x ¿Í y¸¦ swapÇÏ°í ÁøÇàÇß´Ù.
+	ë°±ì¤€ì˜ ë…¸íŠ¸ ë¶€ë¶„ì„ ì½ì–´ë³´ë©´, êµ¬ê°„ "[x, y]"ì—ì„œ 'x'ê°€ 'y'ë³´ë‹¤ í´ ìˆ˜ë„ ìˆë‹¤ê³  í•œë‹¤.
+	ë”°ë¼ì„œ "x > y"ì¸ ê²½ìš°, 'x' ì™€ 'y'ë¥¼ êµí™˜í•˜ê³  ì§„í–‰í–ˆë‹¤.
 */
 #include <cmath>
 #include <vector>
@@ -19,9 +20,10 @@ int N, Q;
 
 struct SegmentTree
 {
-	int n;
-	int tree_size;
-	vector<ll> range_sum;
+	int			n;
+	int			tree_size;
+	vector<ll>	range_sum;
+
 	SegmentTree(const vector<int> &nums)
 	{
 		n = nums.size();
@@ -35,9 +37,10 @@ struct SegmentTree
 	{
 		if (left == right)
 			return range_sum[node] = nums[left];
-		int mid = (left + right) / 2;
-		ll left_sum = init(nums, left, mid, node * 2);
-		ll right_sum = init(nums, mid + 1, right, node * 2 + 1);
+		int	mid = (left + right) / 2;
+		ll	left_sum = init(nums, left, mid, node * 2);
+		ll	right_sum = init(nums, mid + 1, right, node * 2 + 1);
+
 		return range_sum[node] = left_sum + right_sum;
 	}
 
@@ -47,9 +50,10 @@ struct SegmentTree
 			return 0;
 		if (left <= node_left && node_right <= right)
 			return range_sum[node];
-		int mid = (node_left + node_right) / 2;
-		ll left_sum = query(left, right, node * 2, node_left, mid);
-		ll right_sum = query(left, right, node * 2 + 1, mid + 1, node_right);
+		int	mid = (node_left + node_right) / 2;
+		ll	left_sum = query(left, right, node * 2, node_left, mid);
+		ll	right_sum = query(left, right, node * 2 + 1, mid + 1, node_right);
+
 		return left_sum + right_sum;
 	}
 
@@ -64,9 +68,10 @@ struct SegmentTree
 			return range_sum[node];
 		if (node_left == node_right)
 			return range_sum[node] = new_val;
-		int mid = (node_left + node_right) / 2;
-		ll left_sum = update(idx, new_val, node * 2, node_left, mid);
-		ll right_sum = update(idx, new_val, node * 2 + 1, mid + 1, node_right);
+		int	mid = (node_left + node_right) / 2;
+		ll	left_sum = update(idx, new_val, node * 2, node_left, mid);
+		ll	right_sum = update(idx, new_val, node * 2 + 1, mid + 1, node_right);
+
 		return range_sum[node] = left_sum + right_sum;
 	}
 
@@ -82,6 +87,7 @@ void input(vector<int> &nums)
 	for (int i = 0; i < N; ++i)
 	{
 		int num;
+
 		cin >> num;
 		nums.push_back(num);
 	}

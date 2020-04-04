@@ -1,21 +1,21 @@
 /*
-	ÆÄÆ¼
+	íŒŒí‹°
 	https://www.acmicpc.net/problem/1238
 
-	°¢ ÇÐ»ýµéÀÌ X ¸¶À»±îÁö °¡´Â ÃÖ´Ü ½Ã°£ Áß¿¡¼­ °¡Àå ¿À·¡ °É¸®´Â ½Ã°£À» Ãâ·ÂÇØ¾ß ÇÑ´Ù.
-	±×·¡¼­ ¸ðµç °æ·ÎÀÇ ÃÖ´Ü ½Ã°£À» ±¸ÇÏ´Â ÇÃ·ÎÀÌµå-¿ö¼È ¾Ë°í¸®ÁòÀ» »ç¿ëÇÏ¿©,
-	°æ·ÎÀÇ ¼Ò¿ä ½Ã°£ÀÌ ´ã°ÜÀÖ´Â int dist[Ãâ¹ßÁ¡][µµÂøÁ¡] À» °»½ÅÇÏ°í
-	dist[X][¸¶À» ¹øÈ£] + dist[¸¶À» ¹øÈ£][X] °¡ °¡Àå Å« °ªÀ» Ãâ·ÂÇÑ´Ù.
+	ê° í•™ìƒì´ 'X' ë§ˆì„ì„ ì˜¤ê°€ëŠ” ìµœë‹¨ ì‹œê°„ ì¤‘ì—ì„œ ê°€ìž¥ ì˜¤ëž˜ ê±¸ë¦¬ëŠ” ì‹œê°„ì„ êµ¬í•˜ëŠ” ë¬¸ì œë‹¤.
+
+	ëª¨ë“  í•™ìƒì˜ ê²½ë¡œë¥¼ ë¹„êµí•´ì•¼í•˜ê¸° ë•Œë¬¸ì— "í”Œë¡œì´ë“œ-ì›Œì…œ ì•Œê³ ë¦¬ì¦˜"ì„ ì‚¬ìš©í•´ì„œ ëª¨ë“  ê²½ë¡œì˜ ìµœë‹¨ ì‹œê°„ì„ êµ¬í–ˆë‹¤.
+	ê·¸ í›„, 'X' ë§ˆì„ì„ ì™•ë³µí•˜ëŠ”ë° ì‹œê°„ì´ ê°€ìž¥ ì˜¤ëž˜ ê±¸ë¦¬ëŠ” í•™ìƒì„ ì°¾ì•˜ë‹¤.
 */
 #include <iostream>
 
 using namespace std;
 
-constexpr auto N_MAX = 1001;
+constexpr auto MAXN = 1001;
 constexpr auto INF = 987654321;
 
 int N, M, X;
-int dist[N_MAX][N_MAX];
+int dist[MAXN][MAXN];
 
 void init()
 {
@@ -30,16 +30,16 @@ void init()
                 dist[i][j] = INF;
         }
     }
-
-    int start, end, length;
     for (int i = 0; i < M; ++i)
     {
+    	int start, end, length;
+
         cin >> start >> end >> length;
         dist[start][end] = length;
     }
 }
 
-void fw()
+void floid()
 {
     for (int m = 1; m <= N; ++m)
         for (int s = 1; s <= N; ++s)
@@ -51,11 +51,9 @@ int solve()
 {
     int ans = -INF;
 
-    fw();
+    floid();
     for (int i = 1; i <= N; ++i)
-        if (dist[X][i] != INF)
-            ans = ans < dist[X][i] + dist[i][X] ? dist[X][i] + dist[i][X] : ans;
-
+        ans = ans < dist[X][i] + dist[i][X] ? dist[X][i] + dist[i][X] : ans;
     return (ans);
 }
 
@@ -65,8 +63,6 @@ int main()
     cin.tie(NULL);
 
     init();
-    int ans = solve();
-    cout << ans << '\n';
-
+    cout << solve() << '\n';
     return 0;
 }
