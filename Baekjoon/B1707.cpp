@@ -2,11 +2,13 @@
 	이분 그래프
 	https://www.acmicpc.net/problem/1707
 
-	인접한 정점을 서로 다른 집합에 넣을 수 있다면, 이분 그래프다.
+	정점과 간선이 주어질 때, 이분 그래프인지 판별하는 문제다.
 
-	집합이 정해지지 않은 정점을 시작으로 너비 우선 탐색을 진행한다.
-	다음으로 탐색할 정점이 집합에 포함되어 있지 않다면, 현재 정점과 다른 집합에 넣는다.
-	만약 다음으로 탐색할 정점이 이미 현재 정점과 같은 집합에 들어가 있다면, 해당 그래프는 이분 그래프가 아니다.
+	간선으로 연결된 정점을 서로 다른 집합에 넣을 수 있다면, 이분 그래프다.
+
+	집합이 정해지지 않은 정점부터 "너비 우선 탐색"을 진행한다.
+	탐색을 진행하면서 다음 정점이 집합에 포함되지 않았다면, 현재 정점과 다른 집합에 넣는다.
+	만약 다음으로 탐색할 정점이 이미 현재 정점과 같은 집합에 들어가 있다면, 주어진 그래프는 이분 그래프가 아니다.
 */
 #include <queue>
 #include <vector>
@@ -14,14 +16,14 @@
 
 using namespace std;
 
-constexpr int MAXV = 20000 + 1;
+constexpr int MAX_V = 20000 + 1;
 
-int K, V, E;
-int set[MAXV];
-bool possible;
-vector<int> graph[MAXV];
+int			K, V, E;
+int			set[MAX_V];
+bool		possible;
+vector<int>	graph[MAX_V];
 
-void init()
+void	init(void)
 {
 	cin >> V >> E;
 	possible = true;
@@ -30,16 +32,17 @@ void init()
 		set[i] = 0;
 		graph[i].clear();
 	}
-	for (int i = 0; i < E; ++i)
+	for (int i = 1; i <= E; ++i)
 	{
 		int vertex1, vertex2;
+
 		cin >> vertex1 >> vertex2;
 		graph[vertex1].push_back(vertex2);
 		graph[vertex2].push_back(vertex1);
 	}
 }
 
-bool bfs(int start)
+bool	bfs(int start)
 {
 	queue<int> q;
 
@@ -66,20 +69,20 @@ bool bfs(int start)
 	return true;
 }
 
-void solve()
+void	solve(void)
 {
-	for (int i = 1; i <= V; i++)
+	for (int i = 1; i <= V && possible; ++i)
 		if (set[i] == 0)
 			possible &= bfs(i);
 }
 
-int main(void)
+int		main(void)
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 
 	cin >> K;
-	for (int i = 0; i < K; ++i)
+	for (int i = 1; i <= K; ++i)
 	{
 		init();
 		solve();
