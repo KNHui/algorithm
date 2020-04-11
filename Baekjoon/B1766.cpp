@@ -2,9 +2,11 @@
 	문제집
 	https://www.acmicpc.net/problem/1766
 
-	위상 정렬을 사용하면서 난이도가 쉬운 문제부터 출력한다.
+	조건에 따라 푸는 문제의 순서를 구해야한다.
 
-	단순히 위상 정렬을 사용하면, 어려운 문제부터 풀 수 있다.
+	"위상 정렬"을 사용하면서 난이도가 쉬운 문제부터 출력했다.
+	단순히 "위상 정렬"을 사용하면, 어려운 문제부터 풀 수 있다.
+
 	ex.
 	input
 	4 4
@@ -18,7 +20,8 @@
 
 	answer
 	4 2 3 1
-	그래서 위상 정렬에 우선 순위 큐를 사용하여 쉬운 문제부터 풀도록 해야한다.
+
+	그래서 "위상 정렬"에 "우선 순위 큐"를 사용하여 쉬운 문제부터 풀도록 했다.
 */
 #include <queue>
 #include <vector>
@@ -26,13 +29,13 @@
 
 using namespace std;
 
-constexpr int MAXN = 32000 + 1;
+constexpr int MAX_N = 32000 + 1;
 
-int N, M;
-int indegree[MAXN];
-vector<int> workbook[MAXN];
+int			N, M;
+int			indegree[MAX_N];
+vector<int>	workbook[MAX_N];
 
-void init()
+void	init(void)
 {
 	cin >> N >> M;
 	for (int i = 0; i < M; ++i)
@@ -45,7 +48,7 @@ void init()
 	}
 }
 
-void solve()
+void	solve(void)
 {
 	priority_queue<int, vector<int>, greater<int>> pq;
 
@@ -68,7 +71,7 @@ void solve()
 	}
 }
 
-int main(void)
+int		main(void)
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
