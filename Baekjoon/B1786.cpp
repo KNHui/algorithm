@@ -1,43 +1,37 @@
 /*
-	Ã£±â
+	ì°¾ê¸°
 	https://www.acmicpc.net/problem/1786
 
-	KMP ¾Ë°í¸®ÁòÀ» »ç¿ëÇÏ¿© ¹®ÀÚ¿­ T¿¡¼­ ¹®ÀÚ¿­ P°¡
-	¾î´À À§Ä¡¿¡¼­ ³ªÅ¸³ª´ÂÁö º¤ÅÍ result¿¡ ÀúÀåÇÏ°í,
-	º¤ÅÍ resultÀÇ »çÀÌÁî¿Í ¿ä¼ÒµéÀ» Ãâ·ÂÇÑ´Ù.
-
-	ÀÌ ¶§, ¹®Á¦¿¡¼­ ÀÎµ¦½º´Â 1ºÎÅÍ ½ÃÀÛÇÏ¹Ç·Î result¿¡ ´ã±â´Â ÀÎµ¦½º °ª¿¡ 1À» ´õÇÏ¿© ÀúÀåÇÑ´Ù.
+	"KMP" ì•Œê³ ë¦¬ì¦˜ìœ¼ë¡œ ë¬¸ìì—´ 'T'ì—ì„œ ë¬¸ìì—´ 'P'ê°€ ì–´ëŠ ìœ„ì¹˜ì—ì„œ ë‚˜íƒ€ë‚˜ëŠ”ì§€ êµ¬í–ˆë‹¤.
 */
 
-#include <iostream>
 #include <vector>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 string T, P;
 
-void input()
+void		input(void)
 {
 	getline(cin, T);
 	getline(cin, P);
 }
 
-void output(vector<int> &result)
+void		output(vector<int> &result)
 {
 	cout << result.size() << '\n';
 	for (size_t i = 0; i < result.size(); ++i)
-	{
 		cout << result[i] << '\n';
-	}
 }
 
-vector<int> getPartialMatch()
+vector<int>	getPartialMatch(void)
 {
-	size_t m = P.size();
-	vector<int> pi(m, 0);
-
-	int begin = 1, matched = 0;
+	int			begin = 1;
+	int			matched = 0;
+	size_t		m = P.size();
+	vector<int>	pi(m, 0);
 
 	while (begin + matched < m)
 	{
@@ -63,23 +57,17 @@ vector<int> getPartialMatch()
 	return pi;
 }
 
-vector<int> kmp()
+void		kmp(vector<int> &result)
 {
-	size_t n = T.size();
-	size_t m = P.size();
-
-	vector<int> result;
-	vector<int> pi = getPartialMatch();
-
-	int matched = 0;
+	int			matched = 0;
+	size_t		n = T.size();
+	size_t		m = P.size();
+	vector<int>	pi = getPartialMatch();
 
 	for (int i = 0; i < n; ++i)
 	{
 		while (matched > 0 && T[i] != P[matched])
-		{
 			matched = pi[matched - 1];
-		}
-
 		if (T[i] == P[matched])
 		{
 			++matched;
@@ -90,22 +78,22 @@ vector<int> kmp()
 			}
 		}
 	}
-
-	return result;
 }
 
-void solve()
+void		solve(void)
 {
-	vector<int> result = kmp();
+	vector<int> result;
+
+	kmp(result);
 	output(result);
 }
-int main(void)
+
+int			main(void)
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 
 	input();
 	solve();
-
 	return 0;
 }
