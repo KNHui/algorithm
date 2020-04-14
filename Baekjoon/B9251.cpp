@@ -18,8 +18,8 @@ using namespace std;
 
 constexpr int MAX_LEN = 1000 + 1;
 
-int dp[MAX_LEN][MAX_LEN];
-string a, b;
+int 	dp[MAX_LEN][MAX_LEN];
+string	a, b;
 
 int solve(void)
 {
