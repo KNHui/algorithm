@@ -50,6 +50,8 @@ void input(void)
 
 int match(int w, int fn, int idx)
 {
+	if (cache[w][fn] != -1)
+		return cache[w][fn];
 	if (w < W.size() && fn < file_name[idx].size() &&
 		(W[w] == '?' || W[w] == file_name[idx][fn]))
 		return cache[w][fn] = match(w + 1, fn + 1, idx);
@@ -61,12 +63,12 @@ int match(int w, int fn, int idx)
 	return cache[w][fn] = 0;
 }
 
-void solve(void)
+void solve(void) 
 {
 	for (size_t i = 0; i < file_name.size(); i++)
 	{
-		for (size_t j = 0; j < W.size(); ++j)
-			fill(cache[j], cache[j] + file_name[i].size(), -1);
+		for (size_t j = 0; j < W.size() + 1; ++j)
+			fill(cache[j], cache[j] + file_name[i].size() + 1, -1);
 		if (match(0, 0, i))
 			answer.push_back(file_name[i]);
 	}
