@@ -57,6 +57,7 @@ int solve()
 			total_time[i] = time[i];
 		}
 	}
+	
 	while (!q.empty())
 	{
 		int building = q.front();
