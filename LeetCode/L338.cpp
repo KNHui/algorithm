@@ -21,4 +21,4 @@ public:
                 ret.push_back(ret[pre] + 1);
         return ret;
     }
-};
+};di
