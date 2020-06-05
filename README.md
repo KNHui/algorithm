@@ -4,23 +4,27 @@ Algorithm source code management repository
 
 ## File name
 
-The first letter of the file name is the first letter of the site name. Then, the ID or number to identify the problem follows.
-
 - ALGOSPOT  
-  First letter of site name + problem ID
+  ```
+  problem ID
+  ```
 
 - Baekjoon, LeetCode, programmers  
+    
+  The first letter of the file name is the first letter of the site name. Then, the number to identify the problem follows.  
+  ```
   First letter of site name + problem number
+  ```
 
 ## Branch
 
 This section explains the role of the branch.
 
 - not-solve  
-Unsolved problems
+Unsolved problem
 
 - solve  
-Solved problems, but not reviewed
+Solved problem, but not reviewed
 
 - review  
 Solved problem and reviewed it
