@@ -1,25 +1,25 @@
 /*
-	¿òÁ÷ÀÌ´Â ¹Ì·Î Å»Ãâ
+	ì›€ì§ì´ëŠ” ë¯¸ë¡œ íƒˆì¶œ
 	https://www.acmicpc.net/problem/16954
 
-	BFS¸¦ »ç¿ëÇÏ¿© 7Çà 0¿­¿¡¼­ ½ÃÀÛÇÏ¿©, 0Çà 7¿­·Î °¥ ¼ö ÀÖ´ÂÁö ¾ø´ÂÁö¸¦ Ãâ·ÂÇÏ´Â ¹®Á¦ÀÌ´Ù.
+	BFSë¥¼ ì‚¬ìš©í•˜ì—¬ 7í–‰ 0ì—´ì—ì„œ ì‹œìž‘í•˜ì—¬, 0í–‰ 7ì—´ë¡œ ê°ˆ ìˆ˜ ìžˆëŠ”ì§€ ì—†ëŠ”ì§€ë¥¼ ì¶œë ¥í•˜ëŠ” ë¬¸ì œì´ë‹¤.
 	
-	Ä³¸¯ÅÍ´Â ºó Ä­À¸·Î¸¸ ÀÌµ¿ÇÒ ¼ö ÀÖ´Âµ¥,
-	ÀÎÁ¢ÇÑ ÇÑ Ä­ ¶Ç´Â ´ë°¢¼± ¹æÇâÀ¸·Î ÀÎÁ¢ÇÑ ÇÑ Ä­À¸·Î ÀÌµ¿ÇÏ°Å³ª, ÇöÀç À§Ä¡¿¡ ¼­ ÀÖÀ» ¼ö ÀÖ´Ù.
-	±×·¡¼­ ¹æÇâÀ» ´ã°í ÀÖ´Â int dy[9] ¿Í int dx[9] ¿¡ Á¦ÀÚ¸®¸¦ Æ÷ÇÔÇÏ¿© 9 °¡Áö ¹æÇâÀ» ´ã¾Æ¾ß ÇÑ´Ù.
+	ìºë¦­í„°ëŠ” ë¹ˆ ì¹¸ìœ¼ë¡œë§Œ ì´ë™í•  ìˆ˜ ìžˆëŠ”ë°,
+	ì¸ì ‘í•œ í•œ ì¹¸ ë˜ëŠ” ëŒ€ê°ì„  ë°©í–¥ìœ¼ë¡œ ì¸ì ‘í•œ í•œ ì¹¸ìœ¼ë¡œ ì´ë™í•˜ê±°ë‚˜, í˜„ìž¬ ìœ„ì¹˜ì— ì„œ ìžˆì„ ìˆ˜ ìžˆë‹¤.
+	ê·¸ëž˜ì„œ ë°©í–¥ì„ ë‹´ê³  ìžˆëŠ” int dy[9] ì™€ int dx[9] ì— ì œìžë¦¬ë¥¼ í¬í•¨í•˜ì—¬ 9 ê°€ì§€ ë°©í–¥ì„ ë‹´ì•„ì•¼ í•œë‹¤.
 
-	int visit[Çà ÁÂÇ¥][¿­ ÁÂÇ¥] ´Â ÇØ´ç ÁÂÇ¥ÀÇ ¹æ¹® ½Ã°£À» ´ã°í ÀÖ´Ù.
-	µ¿ÀÏÇÑ ½Ã°£¿¡ °°Àº Àå¼Ò¿¡ ¹æ¹®ÇÏ´Â ºÒÇÊ¿äÇÑ ¿¬»êÀ» ÇÇÇÏ°í,
-	´Ù¸¥ ½Ã°£¿¡´Â ¹æ¹®Çß´ø Àå¼Ò¿¡ °¥ ¼ö ÀÖµµ·Ï ÇÏ±â À§ÇÏ¿© visit ¹è¿­À» int ÇüÀ¸·Î ¼±¾ð ÇÏ¿´´Ù.
+	int visit[í–‰ ì¢Œí‘œ][ì—´ ì¢Œí‘œ] ëŠ” í•´ë‹¹ ì¢Œí‘œì˜ ë°©ë¬¸ ì‹œê°„ì„ ë‹´ê³  ìžˆë‹¤.
+	ë™ì¼í•œ ì‹œê°„ì— ê°™ì€ ìž¥ì†Œì— ë°©ë¬¸í•˜ëŠ” ë¶ˆí•„ìš”í•œ ì—°ì‚°ì„ í”¼í•˜ê³ ,
+	ë‹¤ë¥¸ ì‹œê°„ì—ëŠ” ë°©ë¬¸í–ˆë˜ ìž¥ì†Œì— ê°ˆ ìˆ˜ ìžˆë„ë¡ í•˜ê¸° ìœ„í•˜ì—¬ visit ë°°ì—´ì„ int í˜•ìœ¼ë¡œ ì„ ì–¸ í•˜ì˜€ë‹¤.
 
-	Ä³¸¯ÅÍ°¡ ÀÌµ¿ÇÑ ÈÄ¿¡ º®ÀÌ ¿òÁ÷ÀÌ±â ¶§¹®¿¡ queue<int> tq ¿¡ ½Ã°£À» ÀúÀåÇÏ°í
-	preTime¿¡ ÀÌÀü ½Ã°£À» ÀúÀåÇÏ¿© ½Ã°£ÀÌ °æ°úÇÏ¸é, º®À» ¿òÁ÷ÀÎ´Ù.
-	±×¸®°í Ä³¸¯ÅÍ°¡ ÇöÀç º® À§Ä¡¿¡ ÀÖ´Ù¸é, continue¸¦ ÇÏ¿© Å¥ÀÇ ´ÙÀ½ ¿ø¼Ò·Î ³Ñ¾î°£´Ù.
+	ìºë¦­í„°ê°€ ì´ë™í•œ í›„ì— ë²½ì´ ì›€ì§ì´ê¸° ë•Œë¬¸ì— queue<int> tq ì— ì‹œê°„ì„ ì €ìž¥í•˜ê³ 
+	preTimeì— ì´ì „ ì‹œê°„ì„ ì €ìž¥í•˜ì—¬ ì‹œê°„ì´ ê²½ê³¼í•˜ë©´, ë²½ì„ ì›€ì§ì¸ë‹¤.
+	ê·¸ë¦¬ê³  ìºë¦­í„°ê°€ í˜„ìž¬ ë²½ ìœ„ì¹˜ì— ìžˆë‹¤ë©´, continueë¥¼ í•˜ì—¬ íì˜ ë‹¤ìŒ ì›ì†Œë¡œ ë„˜ì–´ê°„ë‹¤.
 
-    Å©±â°¡ 8x8ÀÎ ÀÛÀº Ã¼½ºÆÇ¿¡¼­ Å»ÃâÇÏ±â ¶§¹®¿¡ ½Ã°£Àº ¿À·¡ °É¸®Áö ¾ÊÀ¸³ª,
-    Á¶±ÝÀÌ¶óµµ »¡¸® ´äÀ» ±¸ÇÏ±â À§ÇÏ¿©, noWallTime¿¡ °¡Àå ³ôÀÌ ÀÖ´Â º®ÀÌ »ç¶óÁö´Â ½Ã°£À» ÀúÀåÇÑ´Ù.
-    ±×¸®°í 0Çà 7¿­¿¡ µµÂøÇßÀ» ¶§ »Ó¸¸ ¾Æ´Ï¶ó,
-    ÇöÀç timeÀÌ noWallTime ÀÌ»óÀÌ¶ó¸é Å»ÃâÇÒ ¼ö ÀÖ´Ù°í Ç¥½ÃÇÏ°í bfs ÇÔ¼ö¸¦ Á¾·áÇÑ´Ù.
+	í¬ê¸°ê°€ 8x8ì¸ ìž‘ì€ ì²´ìŠ¤íŒì—ì„œ íƒˆì¶œí•˜ê¸° ë•Œë¬¸ì— ì‹œê°„ì€ ì˜¤ëž˜ ê±¸ë¦¬ì§€ ì•Šìœ¼ë‚˜,
+	ì¡°ê¸ˆì´ë¼ë„ ë¹¨ë¦¬ ë‹µì„ êµ¬í•˜ê¸° ìœ„í•˜ì—¬, noWallTimeì— ê°€ìž¥ ë†’ì´ ìžˆëŠ” ë²½ì´ ì‚¬ë¼ì§€ëŠ” ì‹œê°„ì„ ì €ìž¥í•œë‹¤.
+	ê·¸ë¦¬ê³  0í–‰ 7ì—´ì— ë„ì°©í–ˆì„ ë•Œ ë¿ë§Œ ì•„ë‹ˆë¼,
+	í˜„ìž¬ timeì´ noWallTime ì´ìƒì´ë¼ë©´ íƒˆì¶œí•  ìˆ˜ ìžˆë‹¤ê³  í‘œì‹œí•˜ê³ 
 */
 #include <iostream>
 #include <queue>
@@ -33,7 +33,7 @@ constexpr int dy[9] = {1, 0, 1, 0, -1, 1, -1, 0, -1};
 constexpr int dx[9] = {1, 1, 0, 0, 1, -1, 0, -1, -1};
 
 bool isPossible;
-int noWallTime; // º®ÀÌ ´Ù »ç¶óÁö´Âµ¥ °É¸®´Â ½Ã°£
+int noWallTime; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ ï¿½É¸ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
 int map[MAP_SIZE][MAP_SIZE];
 int visit[MAP_SIZE][MAP_SIZE];
 

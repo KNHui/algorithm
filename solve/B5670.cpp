@@ -1,24 +1,23 @@
 /*
-    ÈÞ´ëÆù ÀÚÆÇ
-    https://www.acmicpc.net/problem/5670
+	íœ´ëŒ€í° ìžíŒ
+	https://www.acmicpc.net/problem/5670
 
-	[ÀÔ·Â]
-	ÀÔ·ÂÀ» ¹Þ´Â Å×½ºÆ® ÄÉÀÌ½ºÀÇ ¼ö°¡ ÁÖ¾îÁöÁö ¾ÊÀ¸¹Ç·Î, while (cin >> N) {}À» ÅëÇØ
-	ÀÔ·ÂÀÌ ¼º°øÇß´Ù¸é °è¼ÓÇØ¼­ Å×½ºÆ® ÄÉÀÌ½º¸¦ ÁøÇàÇÑ´Ù.
+	[ìž…ë ¥]
+	ìž…ë ¥ì„ ë°›ëŠ” í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ì˜ ìˆ˜ê°€ ì£¼ì–´ì§€ì§€ ì•Šìœ¼ë¯€ë¡œ, while (cin >> N) {}ì„ í†µí•´
+	ìž…ë ¥ì´ ì„±ê³µí–ˆë‹¤ë©´ ê³„ì†í•´ì„œ í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ë¥¼ ì§„í–‰í•œë‹¤.
 
-	[Ç®ÀÌ]
-	Æ®¶óÀÌÀÇ ³ëµå¿¡ isSolo¸¦ ³Ö°í ÇØ´ç ³ëµåÀÇ ÀÚ½ÄÀÌ ÇÏ³ª(true)ÀÎÁö ¿©·µ(false)ÀÎÁö Ç¥½ÃÇÑ´Ù.
-	Å¸ÀÌÇÎ ¼ö¸¦ °è»êÇÏ´Â type ÇÔ¼ö¿¡¼­ isSolo°¡ true¶ó¸é Å¸ÀÌÇÎ ¼ö¸¦ Áõ°¡½ÃÅ°Áö ¾Ê°í
-	Àç±Í¸¦ ÁøÇàÇÑ´Ù.
+	[í’€ì´]
+	íŠ¸ë¼ì´ì˜ ë…¸ë“œì— isSoloë¥¼ ë„£ê³  í•´ë‹¹ ë…¸ë“œì˜ ìžì‹ì´ í•˜ë‚˜(true)ì¸ì§€ ì—¬ëŸ¿(false)ì¸ì§€ í‘œì‹œí•œë‹¤.
+	íƒ€ì´í•‘ ìˆ˜ë¥¼ ê³„ì‚°í•˜ëŠ” type í•¨ìˆ˜ì—ì„œ isSoloê°€ trueë¼ë©´ íƒ€ì´í•‘ ìˆ˜ë¥¼ ì¦ê°€ì‹œí‚¤ì§€ ì•Šê³ 
+	ìž¬ê·€ë¥¼ ì§„í–‰í•œë‹¤.
 
-	Æ®¶óÀÌ¿¡ ÀÔ·ÂÇÒ ¶§, ÇöÀç ³ëµåÀÇ ÀÚ½Ä ³ëµå Áß¿¡ ÇöÀç ±ÛÀÚ(*key)ÀÇ ³ëµå ¿Ü¿¡
-	´Ù¸¥ ³ëµå°¡ NULLÀÌ ¾Æ´Ï¶ó¸é, ´Ù¸¥ ±ÛÀÚ·Î Æ®¶óÀÌ°¡ °¥¶óÁø´Ù´Â ¶æÀÌ¹Ç·Î
-	isSolo¸¦ false·Î ¸¸µé¾îÁØ´Ù.
+	íŠ¸ë¼ì´ì— ìž…ë ¥í•  ë•Œ, í˜„ìž¬ ë…¸ë“œì˜ ìžì‹ ë…¸ë“œ ì¤‘ì— í˜„ìž¬ ê¸€ìž(*key)ì˜ ë…¸ë“œ ì™¸ì—
+	ë‹¤ë¥¸ ë…¸ë“œê°€ NULLì´ ì•„ë‹ˆë¼ë©´, ë‹¤ë¥¸ ê¸€ìžë¡œ íŠ¸ë¼ì´ê°€ ê°ˆë¼ì§„ë‹¤ëŠ” ëœ»ì´ë¯€ë¡œ
+	isSoloë¥¼ falseë¡œ ë§Œë“¤ì–´ì¤€ë‹¤.
 
-	[Ãâ·Â]
-	Á¤´äÀ» Ãâ·ÂÇÒ ¶§´Â "cout << fixed;"¿Í "cout.precision(2);"¸¦ »ç¿ëÇÏ¿©
-	¼Ò¼ö Á¡À» °íÁ¤½ÃÅ°°í µÑ Â°ÀÚ¸® ±îÁö ¹Ý¿Ã¸²ÇÏ¿© Ãâ·ÂÇÑ´Ù.
-
+	[ì¶œë ¥]
+	ì •ë‹µì„ ì¶œë ¥í•  ë•ŒëŠ” "cout << fixed;"ì™€ "cout.precision(2);"ë¥¼ ì‚¬ìš©í•˜ì—¬
+	ì†Œìˆ˜ ì ì„ ê³ ì •ì‹œí‚¤ê³  ë‘˜ ì§¸ìžë¦¬ ê¹Œì§€ ë°˜ì˜¬ë¦¼í•˜ì—¬ ì¶œë ¥í•œë‹¤.
 */
 #include <iostream>
 
@@ -41,7 +40,7 @@ struct TrieNode
 {
 	TrieNode *children[ALPHABET];
 	bool terminal;
-	bool isSolo; // ÀÌ ³ëµå ¹ØÀÇ ´Ü¾î°¡ 1°³ »ÓÀÎ°¡
+	bool isSolo; // ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¾î°¡ 1ï¿½ï¿½ ï¿½ï¿½ï¿½Î°ï¿½
 
 	TrieNode() : terminal(false), isSolo(true)
 	{

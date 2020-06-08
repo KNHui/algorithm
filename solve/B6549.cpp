@@ -1,18 +1,17 @@
 /*
-	È÷½ºÅä±×·¥¿¡¼­ °¡Àå Å« Á÷»ç°¢Çü
+	ížˆìŠ¤í† ê·¸ëž¨ì—ì„œ ê°€ìž¥ í° ì§ì‚¬ê°í˜•
 	https://www.acmicpc.net/problem/6549
+	ë¶„í•  ì •ë³µì„ í†µí•˜ì—¬ ë¹ ë¥¸ ì‹œê°„ì— ê°€ìž¥ í° ì§ì‚¬ê°í˜•ì„ êµ¬í•˜ëŠ” ë¬¸ì œë‹¤.
 
-	ºÐÇÒ Á¤º¹À» ÅëÇÏ¿© ºü¸¥ ½Ã°£¿¡ °¡Àå Å« Á÷»ç°¢ÇüÀ» ±¸ÇÏ´Â ¹®Á¦´Ù.
+	ì„¸ê·¸ë¨¼íŠ¸ íŠ¸ë¦¬ë¥¼ ì‚¬ìš©í•˜ì—¬ query_area í•¨ìˆ˜ì—ì„œ êµ¬ê°„ ë‚´ ê°€ìž¥ í° ì§ì‚¬ê°í˜•ì„ êµ¬í•œë‹¤.
+	ì´ë•Œ, query_idx í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì—¬ êµ¬ê°„ ë‚´ ê°€ìž¥ ë‚®ì€ ë†’ì´ì˜ ìœ„ì¹˜ idxë¥¼ êµ¬í•˜ê³ ,
+	idxì˜ ì™¼íŽ¸, í˜„ìž¬ êµ¬ê°„, idxì˜ ì˜¤ë¥¸íŽ¸ ì¤‘ ê°€ìž¥ í° ì§ì‚¬ê°í˜•ì˜ ë„“ì´ë¥¼ ë°˜í™˜í•œë‹¤.
+	ê·¸ ì´ìœ ëŠ” ê°€ìž¥ ë‚®ì€ ë†’ì´ê°€ ìžˆëŠ” idxë¥¼ ì œì™¸í•˜ê³  idxì˜ ì™¼íŽ¸ê³¼ ì˜¤ë¥¸íŽ¸ì„ í™•ì¸í•˜ì—¬,
+	ë” ë†’ê³  ë„“ì€ ì§ì‚¬ê°í˜•ì´ ìžˆëŠ”ì§€ ì°¾ê¸° ìœ„í•´ì„œë‹¤.
 
-	¼¼±×¸ÕÆ® Æ®¸®¸¦ »ç¿ëÇÏ¿© query_area ÇÔ¼ö¿¡¼­ ±¸°£ ³» °¡Àå Å« Á÷»ç°¢ÇüÀ» ±¸ÇÑ´Ù.
-	ÀÌ¶§, query_idx ÇÔ¼ö¸¦ »ç¿ëÇÏ¿© ±¸°£ ³» °¡Àå ³·Àº ³ôÀÌÀÇ À§Ä¡ idx¸¦ ±¸ÇÏ°í,
-	idxÀÇ ¿ÞÆí, ÇöÀç ±¸°£, idxÀÇ ¿À¸¥Æí Áß °¡Àå Å« Á÷»ç°¢ÇüÀÇ ³ÐÀÌ¸¦ ¹ÝÈ¯ÇÑ´Ù.
-	±× ÀÌÀ¯´Â °¡Àå ³·Àº ³ôÀÌ°¡ ÀÖ´Â idx¸¦ Á¦¿ÜÇÏ°í idxÀÇ ¿ÞÆí°ú ¿À¸¥ÆíÀ» È®ÀÎÇÏ¿©,
-	´õ ³ô°í ³ÐÀº Á÷»ç°¢ÇüÀÌ ÀÖ´ÂÁö Ã£±â À§ÇØ¼­´Ù.
-
-	query_idx ÇÔ¼ö¿¡¼­´Â ±¸°£À» ¹þ¾î³­ °æ¿ì MAX_IDX( = 100001)À» ¹ÝÈ¯ÇÑ´Ù.
-	ÀÌ ¹ö·ÁÁö´Â °ªÀº vector<int>& arr¿¡ ÀÎµ¦½º·Î »ç¿ëÇÒ ¼ö ¾øÀ¸¹Ç·Î,
-	Á¶°Ç¹®À» »ç¿ëÇÏ¿© ¹ö¸°´Ù.
+	query_idx í•¨ìˆ˜ì—ì„œëŠ” êµ¬ê°„ì„ ë²—ì–´ë‚œ ê²½ìš° MAX_IDX( = 100001)ì„ ë°˜í™˜í•œë‹¤.
+	ì´ ë²„ë ¤ì§€ëŠ” ê°’ì€ vector<int>& arrì— ì¸ë±ìŠ¤ë¡œ ì‚¬ìš©í•  ìˆ˜ ì—†ìœ¼ë¯€ë¡œ,
+	ì¡°ê±´ë¬¸ì„ ì‚¬ìš©í•˜ì—¬ ë²„ë¦°ë‹¤.
 */
 #include <vector>
 #include <iostream>
