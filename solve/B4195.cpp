@@ -1,10 +1,10 @@
 /*
-	ģ�� ��Ʈ��ũ
+	친구 네트워크
 	https://www.acmicpc.net/problem/4195
-
-	string ���� ��� �̸��� int ������ �ٲپ index�� Ȱ���Ѵ�.
-	���Ͽ� ���ε� �˰������� Ȱ���Ͽ� �׷��� ����µ�,
-	union�� �ؾ� �ϴ� ��� �� �θ��� ģ�� ��Ʈ��ũ ũ�⸦ �����ش�.
+	
+	string 형인 사람 이름을 int 형으로 바꾸어서 index로 활용한다.
+	유니온 파인드 알고리즘을 활용하여 그룹을 만드는데,
+	union을 해야 하는 경우 각 부모의 친구 네트워크 크기를 더해준다.
 */
 
 #include <iostream>

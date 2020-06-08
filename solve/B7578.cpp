@@ -1,20 +1,20 @@
 /*
-	°øÀå
+	ê³µìž¥
 	https://www.acmicpc.net/problem/7578
 
-	A ¿­ÀÇ ¿ø¼Ò°¡ ¼ø¼­°¡ ¼¯¿©¼­ B ¿­¿¡ ÀÖ°í, °°Àº °ªÀÇ ¿ø¼Ò¸¦ ÄÉÀÌºí·Î ¿¬°áÇßÀ» ¶§,
-	¼­·Î ±³Â÷ÇÏ´Â ÄÉÀÌºí ½ÖÀÇ °³¼ö¸¦ ±¸ÇÏ´Â ¹®Á¦´Ù.
+	A ì—´ì˜ ì›ì†Œê°€ ìˆœì„œê°€ ì„žì—¬ì„œ B ì—´ì— ìžˆê³ , ê°™ì€ ê°’ì˜ ì›ì†Œë¥¼ ì¼€ì´ë¸”ë¡œ ì—°ê²°í–ˆì„ ë•Œ,
+	ì„œë¡œ êµì°¨í•˜ëŠ” ì¼€ì´ë¸” ìŒì˜ ê°œìˆ˜ë¥¼ êµ¬í•˜ëŠ” ë¬¸ì œë‹¤.
 
-	A ¿­ÀÇ ¹øÈ£·Î B ¿­ÀÇ ¹øÈ£¸¦ ¹æ¹®ÇÏ°í,
-	B ¿­ÀÇ ¹øÈ£ ¿À¸¥ÂÊ¿¡ ÀÖ´Â ¹øÈ£ Áß¿¡¼­ ÀÌÀü¿¡ ¹æ¹®ÇÑ ¹øÈ£ÀÇ ¼ö¸¦ ret ¿¡ ´õÇØÁÖ°í,
-	´©Àû ÇÕ ret ¸¦ Ãâ·ÂÇÏ´Â Inversion Counting ¹®Á¦´Ù.
+	A ì—´ì˜ ë²ˆí˜¸ë¡œ B ì—´ì˜ ë²ˆí˜¸ë¥¼ ë°©ë¬¸í•˜ê³ ,
+	B ì—´ì˜ ë²ˆí˜¸ ì˜¤ë¥¸ìª½ì— ìžˆëŠ” ë²ˆí˜¸ ì¤‘ì—ì„œ ì´ì „ì— ë°©ë¬¸í•œ ë²ˆí˜¸ì˜ ìˆ˜ë¥¼ ret ì— ë”í•´ì£¼ê³ ,
+	ëˆ„ì  í•© ret ë¥¼ ì¶œë ¥í•˜ëŠ” Inversion Counting ë¬¸ì œë‹¤.
 
-	Inversion CountingÀ» À§ÇÏ¿© vector A_col(A ¿­)¿¡´Â ½Äº°¹øÈ£¸¦ ÀúÀåÇÏ°í,
-	int B_col[MAX_IDX](B ¿­)¿¡´Â ½Äº°¹øÈ£¸¦ ÀÎµ¦½º·Î ÇÏ°í, ¸î ¹øÂ°ÀÎÁö¸¦ °ªÀ¸·Î ÀúÀåÇÑ´Ù.
+	Inversion Countingì„ ìœ„í•˜ì—¬ vector A_col(A ì—´)ì—ëŠ” ì‹ë³„ë²ˆí˜¸ë¥¼ ì €ìž¥í•˜ê³ ,
+	int B_col[MAX_IDX](B ì—´)ì—ëŠ” ì‹ë³„ë²ˆí˜¸ë¥¼ ì¸ë±ìŠ¤ë¡œ í•˜ê³ , ëª‡ ë²ˆì§¸ì¸ì§€ë¥¼ ê°’ìœ¼ë¡œ ì €ìž¥í•œë‹¤.
 
-	¹æ¹®ÇÑ ¹øÈ£ÀÇ ¼ö¸¦ ºü¸£°Ô ±¸ÇÏ±â À§ÇÏ¿© SegmentTree¸¦ »ç¿ëÇß´Ù.
-	query ÇÔ¼ö¿¡¼± ±¸°£ B_col[A_col[i]](¹øÈ£ÀÇ B ¿­ ¹øÂ° ¼ö) ~ N - 1(¿À¸¥ÂÊ ³¡)¿¡ ÀÖ´Â ¹æ¹®ÇÑ ¹øÈ£ÀÇ ¼ö¸¦ ±¸ÇÑ´Ù.
-	update ÇÔ¼ö¿¡¼± ±â°èÀÇ ½Äº°¹øÈ£¿¡ ÇØ´çÇÏ´Â ¸®ÇÁ ³ëµå¿Í ºÎ¸ð ³ëµåµéÀ» °»½ÅÇÑ´Ù.
+	ë°©ë¬¸í•œ ë²ˆí˜¸ì˜ ìˆ˜ë¥¼ ë¹ ë¥´ê²Œ êµ¬í•˜ê¸° ìœ„í•˜ì—¬ SegmentTreeë¥¼ ì‚¬ìš©í–ˆë‹¤.
+	query í•¨ìˆ˜ì—ì„  êµ¬ê°„ B_col[A_col[i]](ë²ˆí˜¸ì˜ B ì—´ ë²ˆì§¸ ìˆ˜) ~ N - 1(ì˜¤ë¥¸ìª½ ë)ì— ìžˆëŠ” ë°©ë¬¸í•œ ë²ˆí˜¸ì˜ ìˆ˜ë¥¼ êµ¬í•œë‹¤.
+	update í•¨ìˆ˜ì—ì„  ê¸°ê³„ì˜ ì‹ë³„ë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” ë¦¬í”„ ë…¸ë“œì™€ ë¶€ëª¨ ë…¸ë“œë“¤ì„ ê°±ì‹ í•œë‹¤.
 */
 #include <cmath>
 #include <vector>

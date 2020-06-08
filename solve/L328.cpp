@@ -6,11 +6,11 @@
 	이때, 상대적 순서는 유지되어야 한다.
 
 	시간 복잡도 O(N), 공간 복잡도 O(1)을 만족시키기 위해 다음과 같은 알고리즘을 사용했다.
-	'''
+	```
 	ListNode* odd : 홀수 번째 노드
 	ListNode* even : 짝수 번째 노드
 	ListNode* even_start : 첫 짝수 번째 노드
-	'''
+	```
 
 	1. 'even->next'는 홀수 번째 노드다.
 	2. 그래서 'even->next'를 'odd->next'에 넣어 홀수 노드를 모은다.
@@ -23,7 +23,7 @@
 class Solution
 {
 public:
-	ListNode* oddEvenList(ListNode* head)
+	ListNode *oddEvenList(ListNode *head)
 	{
 		if (!head)
 			return head;
@@ -31,9 +31,9 @@ public:
 			return head;
 		if (!head->next->next)
 			return head;
-		ListNode* odd = head;
-		ListNode* even = head->next;
-		ListNode* even_start = head->next;
+		ListNode *odd = head;
+		ListNode *even = head->next;
+		ListNode *even_start = head->next;
 
 		while (odd->next->next && even->next)
 		{

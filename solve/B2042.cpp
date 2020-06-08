@@ -1,18 +1,18 @@
 /*
-   ±¸°£ ÇÕ ±¸ÇÏ±â
+   êµ¬ê°„ í•© êµ¬í•˜ê¸°
    https://www.acmicpc.net/problem/2042
 
-   ¼¼±×¸ÕÆ® Æ®¸®¸¦ »ç¿ëÇÏ¿© ºü¸£°Ô ±¸°£ ÇÕÀ» Ã£°Å³ª °»½ÅÇÏ´Â ¹®Á¦ÀÌ´Ù.
+   ì„¸ê·¸ë¨¼íŠ¸ íŠ¸ë¦¬ë¥¼ ì‚¬ìš©í•˜ì—¬ ë¹ ë¥´ê²Œ êµ¬ê°„ í•©ì„ ì°¾ê±°ë‚˜ ê°±ì‹ í•˜ëŠ” ë¬¸ì œì´ë‹¤.
 
-   ±¸°£ ÇÕÀÌ int ¹üÀ§¸¦ ³Ñ¾î¼³ ¼ö ÀÖ±â ¶§¹®¿¡ ±¸°£ ÇÕÀ» ÀúÀåÇÏ´Â º¤ÅÍ range_sumÀÇ Å¸ÀÔÀ» long longÀ¸·Î ¼±¾ðÇÑ´Ù.
+   êµ¬ê°„ í•©ì´ int ë²”ìœ„ë¥¼ ë„˜ì–´ì„¤ ìˆ˜ ìžˆê¸° ë•Œë¬¸ì— êµ¬ê°„ í•©ì„ ì €ìž¥í•˜ëŠ” ë²¡í„° range_sumì˜ íƒ€ìž…ì„ long longìœ¼ë¡œ ì„ ì–¸í•œë‹¤.
 
-   ¼ö ÇÏ³ª¸¦ °»½ÅÇÏ´Â update ÇÔ¼ö´Â ±¸°£ ÇÕµµ °»½ÅÇØÁà¾ß ÇÏ¹Ç·Î
-   idx°¡ ÇöÀç ³ëµåÀÇ ¹üÀ§ [node_left, node_right]¸¦ ¹þ¾î³ª¸é, ±¸°£ ÇÕ range_sum[node]À» ¸®ÅÏÇÑ´Ù.
-   idxÀÇ ¸®ÇÁ ³ëµå±îÁö ¿Â °æ¿ì¿¡´Â range_sum[node]·ê »õ·Î¿î °ªÀ¸·Î °»½Å ÈÄ ¸®ÅÏÇÑ´Ù.
-   
-   ±¸°£ ÇÕÀ» Ã£´Â query ÇÔ¼ö´Â left¿Í right¿¡ Æ÷ÇÔµÇ´Â ±¸°£ÀÇ ÇÕÀ» ±¸ÇØ¾ßÇÏ¹Ç·Î,
-   left¿Í right°¡ ÇöÀç ³ëµåÀÇ ¹üÀ§ [node_left, node_right]¸¦ ¹þ¾î³ª¸é, 0À» ¸®ÅÏÇÑ´Ù.
-   left¿Í right°¡ ÇöÀç ³ëµåÀÇ ¹üÀ§ [node_left, node_right]¿¡ Æ÷ÇÔµÇ¸é, range_sum[node]À» ¸®ÅÏÇÑ´Ù.
+   ìˆ˜ í•˜ë‚˜ë¥¼ ê°±ì‹ í•˜ëŠ” update í•¨ìˆ˜ëŠ” êµ¬ê°„ í•©ë„ ê°±ì‹ í•´ì¤˜ì•¼ í•˜ë¯€ë¡œ
+   idxê°€ í˜„ìž¬ ë…¸ë“œì˜ ë²”ìœ„ [node_left, node_right]ë¥¼ ë²—ì–´ë‚˜ë©´, êµ¬ê°„ í•© range_sum[node]ì„ ë¦¬í„´í•œë‹¤.
+   idxì˜ ë¦¬í”„ ë…¸ë“œê¹Œì§€ ì˜¨ ê²½ìš°ì—ëŠ” range_sum[node]ë£° ìƒˆë¡œìš´ ê°’ìœ¼ë¡œ ê°±ì‹  í›„ ë¦¬í„´í•œë‹¤.
+
+   êµ¬ê°„ í•©ì„ ì°¾ëŠ” query í•¨ìˆ˜ëŠ” leftì™€ rightì— í¬í•¨ë˜ëŠ” êµ¬ê°„ì˜ í•©ì„ êµ¬í•´ì•¼í•˜ë¯€ë¡œ,
+   leftì™€ rightê°€ í˜„ìž¬ ë…¸ë“œì˜ ë²”ìœ„ [node_left, node_right]ë¥¼ ë²—ì–´ë‚˜ë©´, 0ì„ ë¦¬í„´í•œë‹¤.
+   leftì™€ rightê°€ í˜„ìž¬ ë…¸ë“œì˜ ë²”ìœ„ [node_left, node_right]ì— í¬í•¨ë˜ë©´, range_sum[node]ì„ ë¦¬í„´í•œë‹¤.
 */
 #include <vector>
 #include <iostream>
