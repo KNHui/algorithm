@@ -1,33 +1,50 @@
 # Algorithm
 
-Algorithm source code management repository
+Algorithm source code and description management repository
+
+## Usage
+
+This repository contains the source code and description of the algorithm problem.
+
+- The description is easy to understand after reading the problem.
+
+- In the description, the range is indicated as follows.
+
+  ```
+  (a, b) = {x ∈ X: a < x < b}
+  [a, b) = {x ∈ X: a ≤ x < b}
+  [a, ∞) = {x ∈ X: a ≤ x}
+  (-∞, b] = {x ∈ X: x ≤ b}
+  ```
+
+- All characters in this repository are encoded in 'UTF-8'.
 
 ## File name
 
-- ALGOSPOT  
+- Problem of ALGOSPOT
+
   ```
-  problem ID
+  Problem ID
   ```
 
-- Baekjoon, LeetCode, programmers  
-    
-  The first letter of the file name is the first letter of the site name. Then, the number to identify the problem follows.  
+- Problem of Baekjoon, LeetCode and programmers
+  The first letter of the file name is the first letter of the site name. Then the problem number follows.
   ```
   First letter of site name + problem number
   ```
 
-## Branch
+## Directory
 
-This section explains the role of the branch.
+This section describes the role of each directory.
 
 - not-solve  
-Unsolved problem
+  Unsolved problem
 
 - solve  
-Solved problem, but not reviewed
+  Solved problem, but not reviewed
 
 - review  
-Solved problem and reviewed it
+  Solved problem and reviewed it once
 
-- master  
-Solved problem and reviewed it twice
+- others with site names  
+  Solved problem and reviewed it twice
