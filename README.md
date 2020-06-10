@@ -17,7 +17,10 @@ This repository contains the source code and description of the algorithm proble
   (-∞, b] = {x ∈ X: x ≤ b}
   ```
 
-- All characters in this repository are encoded in 'UTF-8'.
+- If you set one tab to have 4 spaces, the indentation will look right. In GitHub, not the source code editor, You can append '?ts=4' to the URL to change the tab-size to 4.  
+   Example: [https://github.com/KNHui/algorithm/blob/master/solve/B1005.cpp?ts=4](https://github.com/KNHui/algorithm/blob/master/solve/B1005.cpp?ts=4)
+
+- All characters in this repository are encoded in UTF-8.
 
 ## File name
 
