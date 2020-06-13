@@ -13,7 +13,7 @@ This repository contains the source code and description of the algorithm proble
   ```
   (a, b) = {x ∈ X: a < x < b}
   [a, b) = {x ∈ X: a ≤ x < b}
-  [a, ∞) = {x ∈ X: a ≤ x}
+  (a, ∞) = {x ∈ X: a < x}
   (-∞, b] = {x ∈ X: x ≤ b}
   ```
 
@@ -30,7 +30,7 @@ This repository contains the source code and description of the algorithm proble
   Problem ID
   ```
 
-- Problem of Baekjoon, LeetCode and programmers
+- Problem of Baekjoon, LeetCode and programmers  
   The first letter of the file name is the first letter of the site name. Then the problem number follows.
   ```
   First letter of site name + problem number
